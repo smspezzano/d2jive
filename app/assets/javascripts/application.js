@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require d2jive
 //= require_tree ../templates
 //= require_tree ./views
 //= require_tree .
