@@ -6,6 +6,9 @@ gem 'rails', '4.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Backbone will be the JS framework
+gem 'backbone-on-rails'
+
 # Use handlebar gem to compile forms
 gem 'handlebars_assets'
 
@@ -30,6 +33,8 @@ gem 'sidetiq'
 
 # Kaminari for pagination 
 gem 'kaminari'
+
+
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
