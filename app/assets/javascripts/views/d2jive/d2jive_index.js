@@ -8,7 +8,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   },
 
   urls: {
-    base: "http://api.jambase.com/venues?zipCode="
+    base: "http://api.songkick.com/api/3.0/search/venues.json?query="
   },
 
   render: function(){
@@ -19,18 +19,18 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   getVenues: function(event){
     event.preventDefault();
 
-    address = $("#zipcode").val();
+    address = $("#city").val().replace(/\s+/g, ',');
 
-    searchURL = this.urls.base + address + "&page=0&api_key=eh8ayaj77te8zgaru9g4bzgx";
+    searchURL = this.urls.base + address + "&apikey=4ash2icfOuY4R7v5";
     $.ajax({
       type: 'get',
       url: searchURL,
     }).done(function(data){
       
       var resultsView;
-
-      for (var venue in data.Venues){ 
-        var eachVenue = {name: data.Venues[venue].Name, id: data.Venues[venue].Id};
+      var venueArray = data.resultsPage.results.venue;
+      for (var venue in venueArray){ 
+        var eachVenue = {name: venueArray[venue].displayName, id: venueArray[venue].id};
         resultsView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
         $('#container').append(resultsView.render().el);      
       }

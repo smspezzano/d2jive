@@ -1,7 +1,7 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
-  id: 'searchResults',
+  id: 'venueResults',
 
-  template: HandlebarsTemplates['d2jive/locale_results'],
+  template: HandlebarsTemplates['d2jive/venue_results'],
 
   events: {
     'click .venue': 'getshows',
@@ -33,8 +33,3 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   }
 
 });
-
-
-
-
-
