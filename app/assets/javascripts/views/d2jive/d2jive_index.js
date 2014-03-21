@@ -27,12 +27,16 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
       url: searchURL,
     }).done(function(data){
       
-      var resultsView;
+      var eachVenue;
+      var venueView;
       var venueArray = data.resultsPage.results.venue;
       for (var venue in venueArray){ 
-        var eachVenue = {name: venueArray[venue].displayName, id: venueArray[venue].id};
-        resultsView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
-        $('#container').append(resultsView.render().el);      
+        eachVenue = {
+          name: venueArray[venue].displayName, 
+          id: venueArray[venue].id,
+        };
+        venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
+        $('#container').append(venueView.render().el);      
       }
     });
 

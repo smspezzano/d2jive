@@ -10,8 +10,4 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
     return this;
   },
 
-  urls: {
-    base: "http://api.songkick.com/api/3.0/venues/"
-  },
-
 });
