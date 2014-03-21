@@ -36,10 +36,21 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
     } 
   },
 
+
   getMap: function(){ 
+    // make a call to google maps API with city and state from input field .val();
+    // use that value to make the get request and pass over to the venue results view
+    
+    // var newLocation = function (){
+      $('#location').keyup(function(){
+        var value = $(this).val();
+        console.log(value);
+      });
+  
+
     // var view = new D2Jive.Views.D2JiveVenueResults({});
     // $('#container').html(view.render().el);
-    Backbone.history.navigate('/venues', {trigger: true});
+    // Backbone.history.navigate('/venues', {trigger: true});
   },
 
 });

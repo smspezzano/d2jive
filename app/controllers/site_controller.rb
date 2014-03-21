@@ -3,7 +3,6 @@ class SiteController < ApplicationController
   end
   
   def venues
-  
   end
-  
+
 end
