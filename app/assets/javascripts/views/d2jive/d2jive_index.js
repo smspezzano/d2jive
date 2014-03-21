@@ -16,15 +16,29 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
     return this;
   },
 
-  getVenues: function(query){
-    searchURL = base + query + "&page=0&api_key=eh8ayaj77te8zgaru9g4bzgx";
+  getVenues: function(event){
+    event.preventDefault();
+
+    address = $("#zipcode").val();
+
+    searchURL = this.urls.base + address + "&page=0&api_key=eh8ayaj77te8zgaru9g4bzgx";
     $.ajax({
       type: 'get',
       url: searchURL,
     }).done(function(data){
-      var view = new D2Jive.Views.D2JiveLocaleResults({});
+      
+      var resultsView;
+
+      for (var venue in data.Venues){ 
+        var eachVenue = {name: data.Venues[venue].Name, id: data.Venues[venue].Id};
+        resultsView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
+        $('#container').append(resultsView.render().el);      
+      }
     });
 
   }
 });
+
+
+
 
