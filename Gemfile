@@ -31,6 +31,9 @@ gem 'jquery-rails'
 gem 'sidekiq'
 gem 'sidetiq'
 
+# Use unicorn as the app server
+gem 'unicorn'
+
 # Kaminari for pagination 
 gem 'kaminari'
 
