@@ -1,3 +1,20 @@
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
 D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   id: 'searchContainer',
 
@@ -5,10 +22,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
 
   events: {
     'click #findMe': 'geoLocation',
-    'click #submit': function(){
-        this.getMap();
-        this.getVenue();
-    },
+    'submit #search': 'getLocation',
   },
 
   render: function(){
@@ -36,21 +50,20 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
     } 
   },
 
-
-  getMap: function(){ 
+  getLocation: function(e){ 
     // make a call to google maps API with city and state from input field .val();
     // use that value to make the get request and pass over to the venue results view
-    
-    // var newLocation = function (){
-      $('#location').keyup(function(){
-        var value = $(this).val();
-        console.log(value);
-      });
-  
-
+    //   var value = $( '#location' ).val();
+    //   $( "p" ).html( value );
+    // // }).keyup();
+    var locationDetails = $(e.currentTarget).serializeObject();
+    console.log(locationDetails);
+    return false;
+      
     // var view = new D2Jive.Views.D2JiveVenueResults({});
     // $('#container').html(view.render().el);
     // Backbone.history.navigate('/venues', {trigger: true});
   },
 
 });
+
