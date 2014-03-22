@@ -1,8 +1,10 @@
 D2Jive.Routers.Main = Backbone.Router.extend({
 
   routes: {
+    
     "": "home",
     "/venues": "venueResults"
+
   },
 
   home: function() {
@@ -14,5 +16,6 @@ D2Jive.Routers.Main = Backbone.Router.extend({
     var view = new D2Jive.Views.D2JiveVenueResults({});
     $('#container').html(view.render().el); 
   },
+
 
 });

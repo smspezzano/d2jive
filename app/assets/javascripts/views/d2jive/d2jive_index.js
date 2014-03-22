@@ -22,7 +22,14 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
 
   events: {
     'click #findMe': 'geoLocation',
-    'submit #search': 'getLocation',
+    'submit #search': function(){
+      this.getLocation();
+      this.getVenues();
+    },
+  },
+
+  urls: {
+    base: "http://api.songkick.com/api/3.0/search/venues.json?query="
   },
 
   render: function(){
@@ -65,5 +72,31 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
     // Backbone.history.navigate('/venues', {trigger: true});
   },
 
+  getVenues: function(event){
+    event.preventDefault();
+
+    address = $("#city").val().replace(/\s+/g, ',');
+
+    searchURL = this.urls.base + address + "&apikey=4ash2icfOuY4R7v5";
+    $.ajax({
+      type: 'get',
+      url: searchURL,
+    }).done(function(data){
+      
+      var eachVenue;
+      var venueView;
+      var venueArray = data.resultsPage.results.venue;
+      for (var venue in venueArray){ 
+        eachVenue = {
+          name: venueArray[venue].displayName, 
+          id: venueArray[venue].id,
+        };
+        venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
+        $('#container').append(venueView.render().el);      
+      }
+    });
+
+  }
 });
+
 
