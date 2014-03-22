@@ -34,6 +34,8 @@ gem 'sidetiq'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'typhoeus'
+
 # Kaminari for pagination 
 gem 'kaminari'
 

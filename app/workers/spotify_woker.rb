@@ -2,7 +2,7 @@ Class SpotifyWorker
   include Sidekiq::Worker
   require 'sidekiq'
 
-  def perform(artistId)
-
+  def perform(artistName)
+    
   end
 end
