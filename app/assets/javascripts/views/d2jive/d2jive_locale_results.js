@@ -28,16 +28,26 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   }).done(function(data){
     var eachVenue;
     var eventView;
-    var venueArray = data.resultsPage.results.event;
-    for (var venue in venueArray){ 
+    var artistArray=[];
+    var eventArray = data.resultsPage.results.event;
+    for (var ev in eventArray){
+      for (var artist in eventArray[ev].performance){
+        var artistObject = {};
+        artistObject['name'] = eventArray[ev].performance[artist].displayName;
+        artistObject['billing'] = eventArray[ev].performance[artist].billing;
+        artistArray.push(artistObject);
+      }
+
       eachEvent = {
-        name: venueArray[venue].displayName, 
-        uri: venueArray[venue].uri,
-        artists: venueArray[venue].performance
+        name: eventArray[ev].displayName, 
+        uri: eventArray[ev].uri,
+        artists: artistArray
       };
       eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
-      $('#container').append(eventView.render().el);  
+      $('#container').append(eventView.render().el);
+       artistArray.length = 0;
     }
   });
   }
 });
+

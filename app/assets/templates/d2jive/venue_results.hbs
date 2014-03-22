@@ -3,4 +3,11 @@
 {{name}}
 <a href={{uri}}>buy tix</a>
 </li>
+<li>{{artists}}</li>
+<li>
+{{#each artists}}
+{{name}}
+{{billing}}
+{{/each}}
+</li>
 </ul>
