@@ -1,4 +1,6 @@
 D2jive::Application.routes.draw do
   root :to => "site#index"
-  resources :venues, :except => [:edit, :new]
+
+  get "/venues", to: "site#venues", as: 'venues'
+
 end
