@@ -1,7 +1,6 @@
 D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   
   id: 'searchContainer',
-  div: 'resultsContainer',
 
   template: HandlebarsTemplates['d2jive/index'],
 
@@ -10,7 +9,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   },
 
   render: function(){
-    alert("this is D2Jive_Index.js");
+    // alert("this is D2Jive_Index.js");
     $(this.el).html(this.template());
     return this;
   },
@@ -38,17 +37,15 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
         eachVenue = [
           venueArray[venue].displayName + ", " + venueArray[venue].id,
         ];
-        // console.log(eachVenue);
+        console.log(eachVenue);
         this.results = $('#searchResults');
         this.results.append('<li>' + '<h2>' + eachVenue + '</h2>' + '<button class="venue">' + 'View upcoming events' + '</button>' + '</li>');  
-        // var view = new D2Jive.Views.D2JiveLocaleResults();
-        // $('#container').append(view.render().el);    
       }
       var venueView = new D2Jive.Views.D2JiveLocaleResults();
-      $('#container').html(venueView.render().results);  
+      $('#container').append(venueView.render().el);  
     });
     
-    Backbone.history.navigate('/venues'+ urlAddress, {trigger: true});
+    Backbone.history.navigate('/venues/'+ urlAddress, {trigger: true});
   },
 
   // yelpUrl: {

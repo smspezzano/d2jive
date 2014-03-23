@@ -1,6 +1,6 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  div: 'searchResults',
+  
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
@@ -19,7 +19,30 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
   getShows: function(event){
+    alert("we've reached the function");
   event.preventDefault();
+
+  var getTracks = function(artistName, callback){
+    var filtered_response;
+    var url = "http://ws.spotify.com/search/1/track.json?q=";
+    var trackUrl = url + artistName;
+    $.ajax({
+    type: 'get',
+    url: trackUrl,
+    success: function(response){
+        filtered_response = response.tracks;
+        callback(filtered_response);
+      }
+    })
+    .fail(function() {
+      console.log( "error" );
+    });
+  };
+
+  // var spotifyResults = function(result){
+  //   trackArray = result;
+  //   return trackArray;
+  // };
 
   venueId = $(".venueId").val();
 
@@ -29,16 +52,38 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     url: searchURL,
   }).done(function(data){
     var eachVenue;
-    var venueArray = data.resultsPage.results.event;
-    for (var venue in venueArray){ 
+    var eventView;
+    var artistArray=[];
+    var trackArray;
+    var eventArray = data.resultsPage.results.event;
+    for (var ev in eventArray){
+      for (var artist in eventArray[ev].performance){
+        var artistObject = {};
+        artistObject['name'] = eventArray[ev].performance[artist].displayName;
+        artistObject['billing'] = eventArray[ev].performance[artist].billing;
+        artistArray.push(artistObject);
+        var artistName = eventArray[ev].performance[artist].displayName.replace(/\s+/g, '%20');
+        getTracks(artistName, function(result){
+          trackArray = result;
+          return trackArray;
+        });
+      }
+
       eachEvent = {
-        name: venueArray[venue].displayName, 
-        uri: venueArray[venue].uri,
-        artists: venueArray[venue].performance
+        name: eventArray[ev].displayName, 
+        uri: eventArray[ev].uri,
+        artists: artistArray,
+        tracks: trackArray
       };
+      eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
+      $('#container').append(eventView.render().el);
+       artistArray.length = 0;
     }
-    var eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
-    $('#searchResults').html(eventView.render().el);  
   });
   }
 });
+
+
+
+
+
