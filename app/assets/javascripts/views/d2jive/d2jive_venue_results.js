@@ -1,13 +1,15 @@
 D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
-  id: 'venueResults',
+  id: 'localeResults',
 
   template: HandlebarsTemplates['d2jive/venue_results'],
 
-  events: {},
+  events: {
+    // 'onload newCity': 'render',
+  },
 
   render: function(){
-    $(this.el).html(this.template(this.model));
-    return this;
+    $(this.el).html(this.template());
+  
   },
 
 });

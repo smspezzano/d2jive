@@ -1,14 +1,16 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
-  id: 'searchResults',
+  
+  div: 'searchResults',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
   events: {
-    'submit .venue': 'getShows',
+    'click .venue': 'getShows',
   },
 
   render: function(){
-    $(this.el).html(this.template(this.model));
+    alert("we have reached D2Jive_locale_results.js");
+    $(this.el).html(this.template());
     return this;
   },
 
@@ -27,7 +29,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     url: searchURL,
   }).done(function(data){
     var eachVenue;
-    var eventView;
     var venueArray = data.resultsPage.results.event;
     for (var venue in venueArray){ 
       eachEvent = {
@@ -35,9 +36,9 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
         uri: venueArray[venue].uri,
         artists: venueArray[venue].performance
       };
-      eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
-      $('#container').append(eventView.render().el);  
     }
+    var eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
+    $('#searchResults').html(eventView.render().el);  
   });
   }
 });

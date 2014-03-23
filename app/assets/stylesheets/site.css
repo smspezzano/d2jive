@@ -1,0 +1,24 @@
+#searchContainer {
+  margin: 200px auto; 
+  text-align:center;
+}
+
+#city {
+  width: 200px;
+}
+
+#searchResults {
+  list-style: none;
+}
+
+#searchResults li {
+  display: inline-block;
+  width: 320px;
+  height: 300px;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+#searchResults li h2 {
+  font-size: 14px ;
+}
