@@ -25,3 +25,15 @@ window.D2Jive = {
 $(document).ready(function(){
   D2Jive.initialize();
 });
+
+
+// <ul>
+//   <li>
+//   {{name}}
+//   <form class='venue'>
+//   <input class='venueId' type=hidden value={{id}}>
+//   <input type=submit>
+//   <form>
+//   </li>
+// </ul>
+// </div>
