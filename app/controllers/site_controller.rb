@@ -5,4 +5,6 @@ class SiteController < ApplicationController
   def venues
   end
 
+  def venue
+  end
 end

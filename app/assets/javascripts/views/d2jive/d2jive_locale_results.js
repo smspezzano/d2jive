@@ -1,20 +1,20 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  id: "searchResults",
+  id: 'container',
 
-  template: HandlebarsTemplates['d2jive/index'],
+  template: HandlebarsTemplates['d2jive/locale_results'],
 
   events: {
-    'bind #venueId': 'getShows',
+    'click .shows': 'getShows',
   },
 
   initialize: function () {
+    console.log("we are on the venue results page");
     // ('#searchResults').bind(this.getVenues);
     // vent.on('venues:getVenues', this.getVenues, this);
   },
 
   render: function(){
-    console.log("we are on the venue results page");
     $(this.el).html(this.template());
     return this;
   },
@@ -27,7 +27,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   alert("we've reached the function");
   event.preventDefault();
 
-  getShows.prototype.getTracks = function(artistName, callback){
+  var getTracks = function(artistName, callback){
     var filtered_response;
     var url = "http://ws.spotify.com/search/1/track.json?q=";
     var trackUrl = url + artistName;

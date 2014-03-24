@@ -17,7 +17,8 @@ D2Jive.Router = Backbone.Router.extend({
   routes: {
     
     "": "home",
-    "/venues/:location": "localeResults"
+    "venues": "localeResults",
+    // "/venue" : "showResults",
 
   },
 
@@ -26,11 +27,15 @@ D2Jive.Router = Backbone.Router.extend({
     $('#container').html(view.render().el);
   },
 
-  localeResults: function(venueLocation){
-    vent.trigger('venues:get', venueLocation);
-    // var view = new D2Jive.Views.D2JiveLocaleResults({});
-    // $('#searchResults').append(view.render().el); 
+  localeResults: function(){
+    alert("we made it");
+    var view = new D2Jive.Views.D2JiveLocaleResults({});
+    $('#searchContainer').append(view.render().el); 
   },
+
+  showResults: function(venueId){
+    // var newview = new D2Jive.Views.D2JiveVenueResults({});
+  }
 
 });
 
@@ -46,11 +51,3 @@ $(document).ready(function(){
   D2Jive.initialize();
 });
 
-
-// <ul>
-//   <li>
-//   {{name}}
-//   <button class='venueId' type=hidden value={{id}}>"View upcoming Show"</button>
-//   </li>
-// </ul>
-// </div>
