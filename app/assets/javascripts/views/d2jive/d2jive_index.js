@@ -39,7 +39,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
         $('#container').append(venueView.render().el);      
       }
     });
-
+  Backbone.history.navigate('venues', {trigger: true});
   }
 });
 

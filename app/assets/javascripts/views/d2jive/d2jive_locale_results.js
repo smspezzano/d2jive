@@ -17,29 +17,8 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
   getShows: function(event){
+    alert("getShows on locale");
   event.preventDefault();
-
-  var getTracks = function(artistName, callback){
-    var filtered_response;
-    var url = "http://ws.spotify.com/search/1/track.json?q=";
-    var trackUrl = url + artistName;
-    $.ajax({
-    type: 'get',
-    url: trackUrl,
-    success: function(response){
-        filtered_response = response.tracks;
-        callback(filtered_response);
-      }
-    })
-    .fail(function() {
-      console.log( "error" );
-    });
-  };
-
-  // var spotifyResults = function(result){
-  //   trackArray = result;
-  //   return trackArray;
-  // };
 
   venueId = $(".venueId").val();
 
@@ -51,7 +30,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     var eachVenue;
     var eventView;
     var artistArray=[];
-    var trackArray;
     var eventArray = data.resultsPage.results.event;
     for (var ev in eventArray){
       for (var artist in eventArray[ev].performance){
@@ -59,18 +37,12 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
         artistObject['name'] = eventArray[ev].performance[artist].displayName;
         artistObject['billing'] = eventArray[ev].performance[artist].billing;
         artistArray.push(artistObject);
-        var artistName = eventArray[ev].performance[artist].displayName.replace(/\s+/g, '%20');
-        getTracks(artistName, function(result){
-          trackArray = result;
-          return trackArray;
-        });
       }
 
       eachEvent = {
         name: eventArray[ev].displayName, 
         uri: eventArray[ev].uri,
         artists: artistArray,
-        tracks: trackArray
       };
       eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
       $('#container').append(eventView.render().el);
