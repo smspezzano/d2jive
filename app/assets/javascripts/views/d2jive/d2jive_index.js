@@ -43,7 +43,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
           id: venueArray[venue].id,
         };
         venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
-        $('#container').append(venueView.render().el);      
+        $('#searchResults').append(venueView.render().el);      
       }
     });   
   Backbone.history.navigate('venues', {trigger: true});
@@ -56,7 +56,3 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
         // console.log(eachVenue);
         //$('#searchResults').append('<li>' + '<h2>' + eachVenue.name + '</h2>' + '<button class="shows" id="' + eachVenue.id + '">' + eachVenue.id + '</button>' + '</li>');   
         // }
-
-
-
-

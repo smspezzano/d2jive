@@ -29,12 +29,12 @@ D2Jive.Router = Backbone.Router.extend({
 
   localeResults: function(){
      alert("we made it");
-    var venue = {
-      name: "test",
-      id: 1
-    };
-    var view = new D2Jive.Views.D2JiveLocaleResults({});
-    $('#searchContainer').append(view.render().el); 
+    // var venue = {
+    //   name: "test",
+    //   id: 1
+    // };
+    // var view = new D2Jive.Views.D2JiveLocaleResults({});
+    // $('#searchContainer').append(view.render().el); 
   },
 
   showResults: function(venueId){

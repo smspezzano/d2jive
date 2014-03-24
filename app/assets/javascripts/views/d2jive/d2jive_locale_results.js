@@ -15,7 +15,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
   render: function(){
-    $(this.el).html(this.template());
+    $(this.el).html(this.template(this.model));
     return this;
   },
 
@@ -26,7 +26,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   getShows: function(event){
   event.preventDefault();
 
-  var venueId = $("#venueId").val();
+  var venueId = $(".venueId").val();
 
   searchURL = this.urls.base + venueId + "/calendar.json?apikey=4ash2icfOuY4R7v5";
   $.ajax({
