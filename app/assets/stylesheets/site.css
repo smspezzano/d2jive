@@ -1,0 +1,60 @@
+#searchContainer {
+  margin: 200px auto; 
+  text-align:center;
+}
+
+#city {
+  width: 200px;
+}
+
+#searchResults {
+  list-style: none;
+}
+
+.polaroids li {
+  display: inline-block;
+  width: 320px;
+  height: 300px;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.polaroids li a {
+  font-size: 14px ;
+}
+
+.polaroids a {
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+}
+ 
+.polaroids li:nth-child(even) a {
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+}
+ 
+.polaroids li:nth-child(3n) a {
+  -webkit-transform: none;
+  -moz-transform: none;
+  position: relative;
+  top: -5px;
+}
+ 
+.polaroids li:nth-child(5n) a {
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  position: relative;
+  right: 5px;
+}
+ 
+.polaroids li:nth-child(8n) a {
+  position: relative;
+  top: 8px;
+  right: 5px;
+}
+ 
+.polaroids li:nth-child(11n) a {
+  position: relative;
+  top: 3px;
+  left: -5px;
+}
