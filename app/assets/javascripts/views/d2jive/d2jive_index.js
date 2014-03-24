@@ -9,8 +9,12 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
 
   },
 
+  initialize: function () {
+    vent.on('venues:getVenues', this.getVenues, this);
+  },
+
   render: function(){
-    // alert("this is D2Jive_Index.js");
+    console.log("we are on the index page");
     $(this.el).html(this.template());
     return this;
   },
@@ -19,82 +23,79 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
     base: "http://api.songkick.com/api/3.0/search/venues.json?query="
   },
 
+
   getVenues: function(event){
     $('#searchResults').empty();
     event.preventDefault();
 
-    urlAddress = $("#city").val().replace(/\s+/g, '+');
+    var location = $("#city").val().replace(/\s+/g, '+');
     address = $("#city").val().replace(/\s+/g, ',');
     yelpLocation = $("#city").val().replace(/\s+/g, '-');
 
     searchURL = this.urls.base + address + "&apikey=4ash2icfOuY4R7v5";
     $.ajax({
       type: 'get',
-      url: searchURL,
+      url: searchURL
     })
     .done(function(data){
       var eachVenue;    
       var venueArray = data.resultsPage.results.venue;
       for (var venue in venueArray){ 
         eachVenue = [ venueArray[venue].displayName, venueArray[venue].id ];
-        console.log(eachVenue); 
-        this.results = $('#searchResults');
-        this.results.append('<li>' + '<h2>' + eachVenue[0] + '</h2>' + '<button id="venueId">' + eachVenue[1] + '</button>' + '</li>');  
-      
-        var auth = {
-        consumer_key: "W_iKkGCGhPWTorzJhkgBCQ",
-        consumer_secret: "CYVL3M5YmDo8iv5lRPF3SEVMStE",
-        access_token: "Xa334POkek8_OWm9Sc4syxhq6e9X7RBU",
-        access_token_secret: "waIC09zvUeiD9GLJtSavrLoA0LU",
-          serviceProvider: {
-            signatureMethod: "HMAC-SHA1"
-          }
-        };
-        var terms = eachVenue[0];
-        var near = yelpLocation;
-        var accessor = {
-          consumerSecret: auth.consumerSecret,
-          tokenSecret: auth.accessTokenSecret
-        };
-        parameters = [];
-        parameters.push(['term', terms]);
-        parameters.push(['location', near]);
-        parameters.push(['callback', 'cb']);
-        parameters.push(['oauth_consumer_key', auth.consumerKey]);
-        parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
-        parameters.push(['oauth_token', auth.accessToken]);
-        parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
-        var message = {
-          'action': 'http://api.yelp.com/v2/search',
-          'method': 'GET',
-          'parameters': parameters
-        };
-        OAuth.setTimestampAndNonce(message);
-        OAuth.SignatureMethod.sign(message, accessor);
-        var parameterMap = OAuth.getParameterMap(message.parameters);
-        parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature);
-        console.log(parameterMap);
-        $.ajax({
-          'url': message.action,
-          'data': parameterMap,
-          'cache': true,
-          'dataType': 'jsonp',
-          'jsonpCallback': 'cb',
-          'success': function(data, textStats, XMLHttpRequest) {
-            console.log(data);
-          }
-        });
-      }
+        console.log(eachVenue);
+        $('#searchResults').append('<li>' + '<h2>' + eachVenue[0] + '</h2>' + '<button id="venueId">' + eachVenue[1] + '</button>' + '</li>');   
+        }
+        // console.log(venueArrary); 
+        // var auth = {
+        // consumer_key: "W_iKkGCGhPWTorzJhkgBCQ",
+        // consumer_secret: "CYVL3M5YmDo8iv5lRPF3SEVMStE",
+        // access_token: "Xa334POkek8_OWm9Sc4syxhq6e9X7RBU",
+        // access_token_secret: "waIC09zvUeiD9GLJtSavrLoA0LU",
+        //   serviceProvider: {
+        //     signatureMethod: "HMAC-SHA1"
+        //   }
+        // };
+        // var terms = eachVenue[0];
+        // var near = yelpLocation;
+        // var accessor = {
+        //   consumerSecret: auth.consumerSecret,
+        //   tokenSecret: auth.accessTokenSecret
+        // };
+        // parameters = [];
+        // parameters.push(['term', terms]);
+        // parameters.push(['location', near]);
+        // parameters.push(['callback', 'cb']);
+        // parameters.push(['oauth_consumer_key', auth.consumerKey]);
+        // parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+        // parameters.push(['oauth_token', auth.accessToken]);
+        // parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+        // var message = {
+        //   'action': 'http://api.yelp.com/v2/search',
+        //   'method': 'GET',
+        //   'parameters': parameters
+        // };
+        // OAuth.setTimestampAndNonce(message);
+        // OAuth.SignatureMethod.sign(message, accessor);
+        // var parameterMap = OAuth.getParameterMap(message.parameters);
+        // parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature);
+        // console.log(parameterMap);
+        // $.ajax({
+        //   'url': message.action,
+        //   'data': parameterMap,
+        //   'cache': true,
+        //   'dataType': 'jsonp',
+        //   'jsonpCallback': 'cb',
+        //   'success': function(data, textStats, XMLHttpRequest) {
+        //     console.log(data);
+        //   }
+        // });
+      // console.log(eachVenue);
       var venueView = new D2Jive.Views.D2JiveLocaleResults();
       $('#container').append(venueView.render().el);  
     });
     
-    Backbone.history.navigate('/venues/'+ urlAddress, {trigger: true});
+    Backbone.history.navigate('/venues/' + location, {trigger: true});
   },  
-
-
-
-
 });
 
 
