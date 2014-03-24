@@ -17,13 +17,10 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
 
     var artistName = $(".artistName").val();
 
-
     // response[tracks].first(10).each do |track|
     //   grabbedTrack = track.href.slice(14..track.href.length)
     //   tackArray.push(grabbedTrack)
     // end
-
-
     var trackObejct;
     var trackArray = [];
     var url = "http://ws.spotify.com/search/1/track.json?q=";

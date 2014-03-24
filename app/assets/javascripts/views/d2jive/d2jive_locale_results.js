@@ -26,29 +26,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   getShows: function(event){
   event.preventDefault();
 
-  var getTracks = function(artistName, callback){
-    var filtered_response;
-    var url = "http://ws.spotify.com/search/1/track.json?q=";
-    var trackUrl = url + artistName;
-    $.ajax({
-    type: 'get',
-    url: trackUrl,
-    success: function(response){
-        filtered_response = response.tracks;
-        callback(filtered_response);
-      }
-    })
-    .fail(function() {
-      console.log( "error" );
-    });
-  };
-
-  // var spotifyResults = function(result){
-  //   trackArray = result;
-  //   return trackArray;
-  // };
-
-  venueId = $("#venueId").val();
+  var venueId = $("#venueId").val();
 
   searchURL = this.urls.base + venueId + "/calendar.json?apikey=4ash2icfOuY4R7v5";
   $.ajax({
