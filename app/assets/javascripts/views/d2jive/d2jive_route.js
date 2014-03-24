@@ -1,8 +1,10 @@
 D2Jive.Routers.Main = Backbone.Router.extend({
 
   routes: {
+
     "venues": "localeResults",
     "": "home"
+
   },
 
   home: function() {
