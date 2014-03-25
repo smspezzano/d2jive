@@ -37,6 +37,7 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
       for (var track in spotifyArray){
         grabbedTrack = spotifyArray[track].href.slice(14, spotifyArray[track].href.length);
         trackArray.push(grabbedTrack);
+        console.log(trackArray);
       }
 
       

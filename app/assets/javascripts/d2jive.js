@@ -28,7 +28,7 @@ D2Jive.Router = Backbone.Router.extend({
   },
 
   localeResults: function(){
-     alert("we made it");
+     // alert("we made it");
     // var venue = {
     //   name: "test",
     //   id: 1
