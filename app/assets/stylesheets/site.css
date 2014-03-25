@@ -1,34 +1,43 @@
+/********* HEADER.html.erb *************/
+
 .header {
-  margin-top: -30px; 
+  margin-top: -30px;
+  margin-bottom: 50px; 
   height: 100px;
+  margin-left: 25px;
 }
 #logo h1{
   color:#3498db;
   font-family: 'Audiowide', cursive;
-  font-size: 80px;    
+  font-size: 65px;
+  z-index: 1; 
+  position: absolute;   
 }
 
 .soundwave {
   margin: -100px; 
-  height: 250px;
-  width:400px;
+  height: 200px;
+  width:350px;
 }
 
-#searchContainer {
-  height: 750px;
+/********* D2Jive_index.hbs *************/
+
+.searchbar {
+  height: 770px;
   top:0;
   width: 100%; 
   text-align:center;
-  background-image: url('index.jpg');*/
+  background-image: url('index.jpg');
   background-repeat: no-repeat;
   position: absolute;
   left: 0px;
   box-shadow: 0 4px 0 gray;
-  z-index: -1;
+  
 }
 
-#searchbar {
+.searchbar form{  
   margin-top: 20%;
+  margin-left:35%;
 }
 
 #city {
@@ -40,7 +49,6 @@
   font-size: 15px;
   color:black;
   text-align: left;
-  opacity: .8;
 }
 
 #searchResults {
@@ -95,6 +103,8 @@
   left: -5px;
 }*/
 
+/********* FOOTER.html.erb *************/
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -103,7 +113,7 @@
 
 .footer ul {
   list-style: none;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
 }
 
 .footer ul li {
@@ -113,5 +123,31 @@
 
 }
 
+/******* ABOUT.html.erb *************/
 
+#our_story p{
+  text-indent: 50px;
+}
+
+
+.my_div {
+  margin-top: 20px; 
+}
+
+#my_image {
+ border: 1px solid black;
+ height: 170px;
+ width:180px;
+ margin-left: 20px;
+}
+
+#about_me {
+  
+}
+
+/******* TERMS_OF_USE.html.erb *************/
+
+#terms p{
+  
+}
 

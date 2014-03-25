@@ -1,16 +1,16 @@
 <ul>
-<li>
-{{name}}
-<a href={{uri}}>buy tix</a>
-</li>
-<li>
-{{#each artists}}
-{{name}}
-<form class='artist'>
-  <input class='artistName' type=hidden value={{name}}>
-  <input type=submit value="Get Tracks">
-</form>
-{{billing}}
-{{/each}}
-</li>
+  <li>
+    {{name}}
+    <a href={{uri}}>buy tix</a>
+  </li>
+  <li>
+    {{#each artists}}
+    {{name}}
+    <form class='artist'>
+      <input class='artistName' type=hidden value={{name}}>
+      <input type=submit value="Get Tracks">
+    </form>
+    {{billing}}
+    {{/each}}
+  </li>
 </ul>

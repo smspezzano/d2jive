@@ -2,18 +2,18 @@
 <html>
 <head>
   <title>D2jive</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
   <!-- <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'> -->
   <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
   <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render "layouts/header" %>
 <div class='bodyContainer'>
-  
+  <%= yield %>
 </div>
   <%= render "layouts/footer" %>
 </body>

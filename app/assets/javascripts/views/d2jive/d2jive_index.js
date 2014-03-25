@@ -5,7 +5,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   template: HandlebarsTemplates['d2jive/index'],
 
   events: {
-    'submit #search': 'getVenues',
+    'submit .searchbar': 'getVenues',
   },
 
   initialize: function (){
