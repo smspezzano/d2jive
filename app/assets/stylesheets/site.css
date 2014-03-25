@@ -1,17 +1,53 @@
+.header {
+  margin-top: -30px; 
+  height: 100px;
+}
+#logo h1{
+  color:#3498db;
+  font-family: 'Audiowide', cursive;
+  font-size: 80px;    
+}
+
+.soundwave {
+  margin: -100px; 
+  height: 250px;
+  width:400px;
+}
+
 #searchContainer {
-  margin: 200px auto; 
+  height: 750px;
+  top:0;
+  width: 100%; 
   text-align:center;
+  background-image: url('index.jpg');*/
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  box-shadow: 0 4px 0 gray;
+  z-index: -1;
+}
+
+#searchbar {
+  margin-top: 20%;
 }
 
 #city {
-  width: 200px;
+  width: 450px;
+  height: 40px;
+  -webkit-border-radius: 80px;
+  -moz- border-radius: 80px;
+  border-radius: 80px;
+  font-size: 15px;
+  color:black;
+  text-align: left;
+  opacity: .8;
 }
 
 #searchResults {
   list-style: none;
 }
 
-.polaroids li {
+/*.polaroids li {
   display: inline-block;
   width: 320px;
   height: 300px;
@@ -57,4 +93,25 @@
   position: relative;
   top: 3px;
   left: -5px;
+}*/
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  margin
 }
+
+.footer ul {
+  list-style: none;
+  margin-bottom: 45px;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin: auto 30px;
+  font-size: 20px;
+
+}
+
+
+

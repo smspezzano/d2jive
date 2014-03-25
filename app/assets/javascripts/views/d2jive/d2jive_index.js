@@ -1,14 +1,11 @@
 D2Jive.Views.D2JiveIndex = Backbone.View.extend({
-  // tagname: 'div',
-  // className: 'subject',
+  
   id: 'searchContainer',
 
   template: HandlebarsTemplates['d2jive/index'],
 
   events: {
     'submit #search': 'getVenues',
-    // 'click': 'onClick'
-
   },
 
   initialize: function (){
@@ -60,17 +57,8 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
         }
       });
 
-    // .done(function(data){
-    //   var eachVenue;    
-    //   var venueArray = data.resultsPage.results.venue;
-    //   for (var venue in venueArray){ 
-    //     eachVenue = {
-    //       name: venueArray[venue].displayName, 
-    //       id: venueArray[venue].id,
-    //     };
-    //     console.log({model: eachVenue});
-    //     venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
-    //     $('#searchResults').append(venueView.render().el);      
+    // venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
+    // $('#searchResults').append(venueView.render().el);      
     //   }
     // });   
   //Backbone.history.navigate('venues' + location, {trigger: true});

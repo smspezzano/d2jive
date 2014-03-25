@@ -24,9 +24,8 @@ D2Jive.Router = Backbone.Router.extend({
 
   home: function() {
     var view = new D2Jive.Views.D2JiveIndex({});
-    $('#container').html(view.render().el);
+    $('.bodyContainer').html(view.render().el);
   },
-
 });
 
 // Create a collection of venus from Venue model on API call

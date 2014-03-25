@@ -7,4 +7,10 @@ class SiteController < ApplicationController
 
   def venue
   end
+
+  def about_us
+  end
+
+  def terms_of_use
+  end
 end
