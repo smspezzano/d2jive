@@ -1,6 +1,6 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  id: 'container',
+  id: 'venue',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
@@ -10,12 +10,10 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     console.log("we are on the venue results page");
-    // ('#searchResults').bind(this.getVenues);
-    // vent.on('venues:getVenues', this.getVenues, this);
   },
 
   render: function(){
-    $(this.el).html(this.template(this.model));
+    $(this.el).html(this.template(this.collection));
     return this;
   },
 
@@ -23,10 +21,13 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     base: "http://api.songkick.com/api/3.0/venues/"
   },
 
+
   getShows: function(event){
   event.preventDefault();
 
   var venueId = $(".venueId").val();
+  $('#container').empty();
+
 
   searchURL = this.urls.base + venueId + "/calendar.json?apikey=4ash2icfOuY4R7v5";
   $.ajax({
@@ -50,13 +51,15 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
         uri: eventArray[ev].uri,
         artists: artistArray,
       };
-      eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
+      eventView = new D2Jive.Views.D2JiveVenueResults({ model: eachEvent});
       $('#container').append(eventView.render().el);
-       artistArray.length = 0;
+      artistArray.length = 0;
     }
   });
+  Backbone.history.navigate('venue', {trigger: true});
   }
 });
+
 
 
 

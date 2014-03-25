@@ -1,14 +1,17 @@
 D2Jive.Views.D2JiveIndex = Backbone.View.extend({
-  // tagname: 'div',
-  // className: 'subject',
+  
   id: 'searchContainer',
 
   template: HandlebarsTemplates['d2jive/index'],
 
   events: {
-    'submit #search': 'getVenues',
-    // 'click': 'onClick'
+    'click #submit': 'getVenues',
+  },
 
+  initialize: function (){
+    this.collection = new venuesCollection();
+    // this.collection.bind('all', this.render);
+    this.model = new venueModel();
   },
 
   render: function(){
@@ -22,37 +25,48 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   },
 
   getVenues: function(event){
-    $('#searchResults').empty();
+    // $('#searchResults').empty();
     event.preventDefault();
+
 
     var location = $("#city").val().replace(/\s+/g, '+');
     var address = $("#city").val().replace(/\s+/g, ',');
-    var yelpLocation = $("#city").val().replace(/\s+/g, '-');
-
+    // var yelpLocation = $("#city").val().replace(/\s+/g, '-');
     searchURL = this.urls.base + address + "&apikey=4ash2icfOuY4R7v5";
-    $.ajax({
-      type: 'get',
-      url: searchURL
-    })
-    .done(function(data){
-      var eachVenue;    
-      var venueArray = data.resultsPage.results.venue;
-      for (var venue in venueArray){ 
-        eachVenue = {
-          name: venueArray[venue].displayName, 
-          id: venueArray[venue].id,
-        };
-        venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
-        $('#searchResults').append(venueView.render().el);      
+    var listOfVenues = [];
+    var songkickData = function(data){
+      var filtered_data = data.resultsPage.results.venue;
+      for (var venue in filtered_data){
+      this.newVenue = new venueModel({
+          location: address,
+          id: filtered_data[venue].id,
+          name: filtered_data[venue].displayName, 
+        }); 
+       listOfVenues.push(newVenue);
       }
-    });   
-  Backbone.history.navigate('venues', {trigger: true});
-  },  
+      var collectionOfVenues = new venuesCollection(listOfVenues);
+      console.log(collectionOfVenues);
+      var venueView = new D2Jive.Views.D2JiveLocaleResults({ model: newVenue });
+    };
+      $.ajax({
+        type: 'get',
+        url: searchURL,
+        success: function(data){
+          songkickData(data);
+        }
+      });
+
+    
+    // $('#searchResults').append(venueView.render().el);      
+    //   }
+    // });   
+  Backbone.history.navigate('venues/' + location, {trigger: true});
+  }, 
 });
 
 
-    
-        // eachVenue = { name: venueArray[venue].displayName, id: venueArray[venue].id };
-        // console.log(eachVenue);
-        //$('#searchResults').append('<li>' + '<h2>' + eachVenue.name + '</h2>' + '<button class="shows" id="' + eachVenue.id + '">' + eachVenue.id + '</button>' + '</li>');   
-        // }
+// eachVenue = { name: venueArray[venue].displayName, id: venueArray[venue].id };
+// console.log(eachVenue);
+//$('#searchResults').append('<li>' + '<h2>' + eachVenue.name + '</h2>' + '<button class="shows" id="' + eachVenue.id + '">' + eachVenue.id + '</button>' + '</li>');   
+// }
+
