@@ -25,6 +25,7 @@ D2Jive.Router = Backbone.Router.extend({
   home: function() {
     var view = new D2Jive.Views.D2JiveIndex({});
     $('.bodyContainer').html(view.render().el);
+
   },
 });
 
@@ -34,6 +35,7 @@ var venuesCollection = Backbone.Collection.extend({
   
   initialize: function(){
     console.log("we made it");
+    
   },
 
   model: venueModel,
@@ -49,7 +51,10 @@ var venuesCollection = Backbone.Collection.extend({
 
 // Create a Venue Model that gets created on API call
 var venueModel = Backbone.Model.extend({
-   
+   initialize: function(){
+    $('#searchContainer').empty();
+    $('.bodyContainer').append('<li>' + '<h2>' + venueModel.name + '</h2>' + '<button class="shows" id="' + venueModel.id + '">' + venueModel.id + '</button>' + '</li>');  
+   },
    // initialize: function(){
    //  var venueView = new D2Jive.Views.D2JiveLocaleResults({model: this.model});
    //  $('#searchResults').append(venueView.render().el);

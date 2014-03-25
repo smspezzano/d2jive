@@ -36,10 +36,9 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
 
     var listOfVenues = [];
     var songkickData = function(data){
-      // console.log(data);
       var filtered_data = data.resultsPage.results.venue;
       for (var venue in filtered_data){
-       var newVenue = new venueModel({
+      this.newVenue = new venueModel({
           location: address,
           id: filtered_data[venue].id,
           name: filtered_data[venue].displayName, 
@@ -48,6 +47,7 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
       }
       var collectionOfVenues = new venuesCollection(listOfVenues);
       console.log(collectionOfVenues);
+      var venueView = new D2Jive.Views.D2JiveLocaleResults({ model: newVenue });
     };
       $.ajax({
         type: 'get',
@@ -57,11 +57,11 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
         }
       });
 
-    // venueView = new D2Jive.Views.D2JiveLocaleResults({ model: eachVenue });
+    
     // $('#searchResults').append(venueView.render().el);      
     //   }
     // });   
-  //Backbone.history.navigate('venues' + location, {trigger: true});
+  Backbone.history.navigate('venues/' + location, {trigger: true});
   }, 
 });
 
