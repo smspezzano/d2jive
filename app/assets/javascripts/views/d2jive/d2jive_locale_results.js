@@ -1,6 +1,6 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  id: 'container',
+  id: 'venue',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
@@ -10,12 +10,10 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     console.log("we are on the venue results page");
-    // ('#searchResults').bind(this.getVenues);
-    // vent.on('venues:getVenues', this.getVenues, this);
   },
 
   render: function(){
-    $(this.el).html(this.template());
+    $(this.el).html(this.template(this.model));
     return this;
   },
 
@@ -23,32 +21,12 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     base: "http://api.songkick.com/api/3.0/venues/"
   },
 
+
   getShows: function(event){
   event.preventDefault();
 
-  var getTracks = function(artistName, callback){
-    var filtered_response;
-    var url = "http://ws.spotify.com/search/1/track.json?q=";
-    var trackUrl = url + artistName;
-    $.ajax({
-    type: 'get',
-    url: trackUrl,
-    success: function(response){
-        filtered_response = response.tracks;
-        callback(filtered_response);
-      }
-    })
-    .fail(function() {
-      console.log( "error" );
-    });
-  };
-
-  // var spotifyResults = function(result){
-  //   trackArray = result;
-  //   return trackArray;
-  // };
-
-  venueId = $("#venueId").val();
+  var venueId = $(".venueId").val();
+  $('#container').empty();
 
   searchURL = this.urls.base + venueId + "/calendar.json?apikey=4ash2icfOuY4R7v5";
   $.ajax({
@@ -72,13 +50,15 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
         uri: eventArray[ev].uri,
         artists: artistArray,
       };
-      eventView = new D2Jive.Views.D2JiveVenueResults({model: eachEvent});
+      eventView = new D2Jive.Views.D2JiveVenueResults({ model: eachEvent});
       $('#container').append(eventView.render().el);
-       artistArray.length = 0;
+      artistArray.length = 0;
     }
   });
+  Backbone.history.navigate('venue', {trigger: true});
   }
 });
+
 
 
 
