@@ -27,24 +27,3 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
      Backbone.history.navigate('venues?address='+location+'', {trigger: true});
   },
 });
-
-
-
-// eachVenue = { name: venueArray[venue].displayName, id: venueArray[venue].id };
-// console.log(eachVenue);
-//$('#searchResults').append('<li>' + '<h2>' + eachVenue.name + '</h2>' + '<button class="shows" id="' + eachVenue.id + '">' + eachVenue.id + '</button>' + '</li>');   
-// }
-
- // getVenues: function(event){
- //    event.preventDefault();
-
-
- //    var location = $("#city").val().replace(/\s+/g, '+');
-
- //  Backbone.history.navigate('venues' + location, {trigger: true}); 
-
-
-  // urls: {
-  //   base: "http://api.songkick.com/api/3.0/search/venues.json?query="
-  // },
-
