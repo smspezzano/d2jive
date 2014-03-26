@@ -11,7 +11,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.photoCollection, 'sync', this.render); 
+    // this.listenTo(this.photoCollection, 'sync', this.render); 
   },
 
   render: function(){

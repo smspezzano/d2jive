@@ -40,8 +40,10 @@ D2Jive.Router = Backbone.Router.extend({
         success: function () {
           var venueObject = self.collection.toJSON();
           var venueName = _.pluck(venueObject, 'displayName');
-        self.photoCollection = new D2Jive.Collections.Photos([],{location: location, venueName: venueName});
-        self.photoCollection.fetch();
+          var eachVenue = _.each(venueName, function(venue){
+             self.photoModel = new D2Jive.Models.Photo([],{location: location, term: venue});
+             self.photoModel.fetch();
+           });
         }
       });
 
@@ -87,19 +89,17 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
 
 D2Jive.Models.Photo = Backbone.Model.extend({
   defaults: {
-    name: '',
+    location: '',
+    term: '',
     image_url: '',
-  }
-});
+  },
 
-D2Jive.Collections.Photos = Backbone.Collection.extend({
-  initialize: function(attributes, options){
-    this.city = options.location;
-    this.term = options.venueName;
+   initialize: function(attributes, options){
+    this.location = options.location;
+    this.term = options.term;
     // this.fetch();
   },
   
-  model: D2Jive.Models.Photo,
   apikey: "EcbxC7m7v9bNWZg15Zi1UQ",
   url: "http://api.yelp.com/business_review_search",
 
@@ -107,7 +107,7 @@ D2Jive.Collections.Photos = Backbone.Collection.extend({
     var that =this;
       var params = _.extend({
         type: 'GET',
-        url: that.url + "?term=" + that.term + "&location=" + that.city + "&ywsid=" + that.apikey, 
+        url: that.url + "?term=" + that.term + "&location=" + that.location + "&ywsid=" + that.apikey, 
       }, options);
 
     return( $.ajax(params));
@@ -115,12 +115,39 @@ D2Jive.Collections.Photos = Backbone.Collection.extend({
   parse: function(resp, options){
     return resp.businesses.photo_url;
   }, 
+
+
 });
 
+D2Jive.Collections.Photos = Backbone.Collection.extend({
+  // initialize: function(attributes, options){
+  //   this.location = options.location;
+  //   this.term = options.venue;
+  //   // this.fetch();
+  // },
+  
+  // model: D2Jive.Models.Photo,
+  // apikey: "EcbxC7m7v9bNWZg15Zi1UQ",
+  // url: "http://api.yelp.com/business_review_search",
 
+  // sync: function(method, model, options){
+  //   var that =this;
+  //     var params = _.extend({
+  //       type: 'GET',
+  //       url: that.url + "?term=" + that.term + "&location=" + that.location + "&ywsid=" + that.apikey, 
+  //     }, options);
 
+  //   return( $.ajax(params));
+  // },
+  // parse: function(resp, options){
+  //   return resp.businesses.photo_url;
+  // }, 
+});
+
+// window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"});
+// window.venues20 = new D2Jive.Collections.Photos([],{location: location, term: "the fillmore"});
 // below is an example used to test our collections request
-// window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"} );
+
 // console.log(venues20.toJSON());
 
 // Create a Event Model that gets changed on API call
