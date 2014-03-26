@@ -7,9 +7,14 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
     'submit .artist': 'getTracks',
   },
 
+  initialize: function () {
+    this.listenTo(this.collection, 'sync', this.render); 
+  },
+
   render: function(){
-    $(this.el).html(this.template(this.model));
-    return this;
+    var eventObject = this.collection.toJSON();
+    this.$el.html(this.template({events: eventObject}));
+    return this; 
   },
 
   getTracks: function(event){

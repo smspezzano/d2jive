@@ -6,7 +6,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   template: HandlebarsTemplates['d2jive/locale_results'],
 
   events: {
-    'click .venue': 'getShows',
+    'click a': 'getShows',
   },
 
   initialize: function () {
@@ -24,7 +24,13 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   // },
 
 
-  // getShows: function(event){
+  getShows: function(event){
+    event.preventDefault();
+    var query = window.location.search;
+    var location = query.split("=")[1].replace(/\+/g, '%20');
+    var venueId = $(event.currentTarget).data("id");
+    Backbone.history.navigate('venue?address='+ location + '?venue=' + venueId, {trigger: true});
+  }
   // event.preventDefault();
 
   // var venueId = $(".venueId").val();
