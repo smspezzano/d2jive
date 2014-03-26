@@ -31,13 +31,23 @@ D2Jive.Router = Backbone.Router.extend({
   },
 
   localeResults: function(params){
+      var self = this;
+
       var location = params.split("=")[1];
       
-      var collection = new D2Jive.Collections.Venues( [], { location: location });
-      var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: collection});
+      this.collection = new D2Jive.Collections.Venues( [], { location: location });
+      this.collection.fetch({
+        success: function () {
+          var venueObject = self.collection.toJSON();
+          var venueName = _.pluck(venueObject, 'displayName');
+        self.photoCollection = new D2Jive.Collections.Photos([],{location: location, venueName: venueName});
+        self.photoCollection.fetch();
+        }
+      });
+
+      var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: this.collection, photoCollection: this.photoCollection });
        $('.bodyContainer').html(newResults.render().el);
   },
-
 
 });
 
@@ -55,7 +65,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 D2Jive.Collections.Venues = Backbone.Collection.extend({
   initialize: function(attributes, options){
     this.city = options.location;
-    this.fetch();
+    // this.fetch();
   },
   model: D2Jive.Models.Venue,
   apikey: "4ash2icfOuY4R7v5" ,
@@ -67,6 +77,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
       }, options);
 
+
     return( $.ajax(params));
   },
   parse: function(resp, options){
@@ -74,6 +85,37 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
   }, 
 });
 
+D2Jive.Models.Photo = Backbone.Model.extend({
+  defaults: {
+    name: '',
+    image_url: '',
+  }
+});
+
+D2Jive.Collections.Photos = Backbone.Collection.extend({
+  initialize: function(attributes, options){
+    this.city = options.location;
+    this.term = options.venueName;
+    // this.fetch();
+  },
+  
+  model: D2Jive.Models.Photo,
+  apikey: "EcbxC7m7v9bNWZg15Zi1UQ",
+  url: "http://api.yelp.com/business_review_search",
+
+  sync: function(method, model, options){
+    var that =this;
+      var params = _.extend({
+        type: 'GET',
+        url: that.url + "?term=" + that.term + "&location=" + that.city + "&ywsid=" + that.apikey, 
+      }, options);
+
+    return( $.ajax(params));
+  },
+  parse: function(resp, options){
+    return resp.businesses.photo_url;
+  }, 
+});
 
 
 
