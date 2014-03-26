@@ -19,8 +19,8 @@ D2Jive.Router = Backbone.Router.extend({
 
   routes: {
     
-    "": "home",                                         // #
-    "venues": "localeResults"                         // #venues/san+francisco+ca
+    "": "home",                                              // #
+    "venues": "localeResults"                               // #venues/san+francisco+ca
     // "venues/:location/:venue/events" : "showResults",   // #venues/san+francisco+ca/the+fillmore/events
 
   },
