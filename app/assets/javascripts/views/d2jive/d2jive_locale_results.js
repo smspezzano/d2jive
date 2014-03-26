@@ -14,10 +14,10 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
    
   },
 
-  render: function(collection){
-    this.$el.html(this.template(collection));
+  render: function(){
+    var venueObject = this.collection.toJSON();
+    this.$el.html(this.template({venues: venueObject}));
     // $('bodyContainer').html(this.$el);
-    // console.log(venues); 
     return this; 
   },
 
