@@ -75,6 +75,8 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
 });
 
 
+
+
 // below is an example used to test our collections request
 // window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"} );
 // console.log(venues20.toJSON());
