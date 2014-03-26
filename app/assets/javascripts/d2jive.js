@@ -32,7 +32,7 @@ D2Jive.Router = Backbone.Router.extend({
 
   localeResults: function(params){
       var location = params.split("=")[1];
-
+      
       var collection = new D2Jive.Collections.Venues( [], { location: location });
       var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: collection});
        $('.bodyContainer').html(newResults.render().el);
@@ -76,8 +76,8 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
 
 
 // below is an example used to test our collections request
-window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"} );
-console.log(venues20.toJSON());
+// window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"} );
+// console.log(venues20.toJSON());
 
 // Create a Event Model that gets changed on API call
 

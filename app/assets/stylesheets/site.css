@@ -39,75 +39,86 @@
   margin-top: 20%;
 }
 
-/*#city {
-  width: 450px;
-  height: 40px;
-  -webkit-border-radius: 80px;
-  -moz- border-radius: 80px;
-  border-radius: 80px;
-  font-size: 15px;
-  color:black;
-  text-align: left;
-}*/
-
 #searchResults {
   list-style: none;
 }
 
-/*.polaroids li {
-  display: inline-block;
-  width: 320px;
-  height: 300px;
+/********* D2Jive_locale_results.hbs *************/
+
+/* Seting the title of the list of venues to be output on the page */
+ul.polaroids a:after {
+  content: attr(title);
+}
+
+ul.polaroids li {
+  /*display: block;*/
+  width: 300px;
+  height: 280px;
   border: 1px solid gray;
-  padding: 10px;
+  text-align: center;
+  margin: 40px;
+
+}
+ul.polaroids img { 
+  display: block; 
+  margin-bottom: 12px;
+  padding-top: 200px;
 }
 
-.polaroids li a {
-  font-size: 14px ;
+ul.polaroids li a {
+  font-size: 20px ;
+  
 }
 
-.polaroids a {
+ul.polaroids li {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
 }
  
-.polaroids li:nth-child(even) a {
+ul.polaroids li:nth-child(even) {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
 }
  
-.polaroids li:nth-child(3n) a {
+ul.polaroids li:nth-child(3n) {
   -webkit-transform: none;
   -moz-transform: none;
   position: relative;
   top: -5px;
 }
  
-.polaroids li:nth-child(5n) a {
+ul.polaroids li:nth-child(5n) {
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
   position: relative;
   right: 5px;
 }
  
-.polaroids li:nth-child(8n) a {
+ul.polaroids li:nth-child(8n) {
   position: relative;
   top: 8px;
   right: 5px;
 }
  
-.polaroids li:nth-child(11n) a {
+ul.polaroids li:nth-child(11n) {
   position: relative;
   top: 3px;
   left: -5px;
-}*/
+}
+
+ul.polaroids a:hover {
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  position: relative;
+  z-index: 5;
+}
 
 /********* FOOTER.html.erb *************/
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  margin
+  /*clear: both;*/
 }
 
 .footer ul {
@@ -117,7 +128,7 @@
 
 .footer ul li {
   display: inline-block;
-  margin: auto 30px;
+  margin: 0 30px;
   font-size: 20px;
 
 }
