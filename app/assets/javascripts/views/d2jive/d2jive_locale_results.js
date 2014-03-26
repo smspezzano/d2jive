@@ -1,7 +1,7 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  className: 'small-12 large-12 columns',
-  id: 'ven_resp_container',
+  className: 'small-12 large-12 columns results_container',
+  id: 'overlay',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 

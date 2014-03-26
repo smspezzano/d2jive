@@ -6,6 +6,7 @@
   height: 100px;
   margin-left: 25px;
 }
+
 #logo h1{
   color:#3498db;
   font-family: 'Audiowide', cursive;
@@ -45,23 +46,41 @@
 
 /********* D2Jive_locale_results.hbs *************/
 
-/* Seting the title of the list of venues to be output on the page */
+.results_container{
+  height: 770px;
+  top: 0;
+  width: 100%; 
+  background-image: url('index.jpg');
+  /*background:rgba(0,0,0,.2);*/
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+}
+
+#overlay {
+  /* make the image a bit darker- a module look */
+}
+ul.polaroids {
+  margin-top: 80px;
+}
+
 ul.polaroids a:after {
   content: attr(title);
 }
 
 ul.polaroids li {
-  /*display: block;*/
   width: 285px;
   height: 250px;
   border: 1px solid #fff;
   text-align: center;
   margin: 45px 45px 45px 55px;
+  background-color: #fff;
 
 }
 ul.polaroids img { 
   display: block; 
   margin-bottom: 12px;
+  /* add the padding below to emmulate an img being in its place for now */
   padding-top: 170px;
 }
 
@@ -71,16 +90,19 @@ ul.polaroids li a {
 }
 
 ul.polaroids li {
+  transform: rotate(-2deg);
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
 }
  
 ul.polaroids li:nth-child(even) {
+  transform: rotate(2deg);
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
 }
  
 ul.polaroids li:nth-child(3n) {
+  transform: none;
   -webkit-transform: none;
   -moz-transform: none;
   position: relative;
@@ -88,6 +110,7 @@ ul.polaroids li:nth-child(3n) {
 }
  
 ul.polaroids li:nth-child(5n) {
+  transform: rotate(5deg);
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
   position: relative;
@@ -107,6 +130,7 @@ ul.polaroids li:nth-child(11n) {
 }
 
 ul.polaroids li:hover {
+  transform: scale(1.25);
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
   position: relative;
@@ -114,12 +138,15 @@ ul.polaroids li:hover {
 }
 
 ul.polaroids li {
+  transition: -webkit-transform .15s linear;
   -webkit-transition: -webkit-transform .15s linear;
+  box-shadow: 0 3px 6px rgba(0,0,0,.25);
   -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
 }
  
 ul.polaroids li {
+  box-shadow: 0 3px 6px rgba(0,0,0,.5);
   -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
@@ -127,7 +154,7 @@ ul.polaroids li {
 /********* FOOTER.html.erb *************/
 
 .footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   /*clear: both;*/
 }
