@@ -6,6 +6,7 @@
   height: 100px;
   margin-left: 25px;
 }
+
 #logo h1{
   color:#3498db;
   font-family: 'Audiowide', cursive;
@@ -39,75 +40,123 @@
   margin-top: 20%;
 }
 
-/*#city {
-  width: 450px;
-  height: 40px;
-  -webkit-border-radius: 80px;
-  -moz- border-radius: 80px;
-  border-radius: 80px;
-  font-size: 15px;
-  color:black;
-  text-align: left;
-}*/
-
 #searchResults {
   list-style: none;
 }
 
-/*.polaroids li {
-  display: inline-block;
-  width: 320px;
-  height: 300px;
-  border: 1px solid gray;
-  padding: 10px;
+/********* D2Jive_locale_results.hbs *************/
+
+.results_container{
+  height: 770px;
+  top: 0;
+  width: 100%; 
+  background-image: url('index.jpg');
+  /*background:rgba(0,0,0,.2);*/
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
 }
 
-.polaroids li a {
-  font-size: 14px ;
+#overlay {
+  /* make the image a bit darker- a module look */
+}
+ul.polaroids {
+  margin-top: 80px;
 }
 
-.polaroids a {
+ul.polaroids a:after {
+  content: attr(title);
+}
+
+ul.polaroids li {
+  width: 285px;
+  height: 250px;
+  border: 1px solid #fff;
+  text-align: center;
+  margin: 45px 45px 45px 55px;
+  background-color: #fff;
+
+}
+ul.polaroids img { 
+  display: block; 
+  margin-bottom: 12px;
+  /* add the padding below to emmulate an img being in its place for now */
+  padding-top: 170px;
+}
+
+ul.polaroids li a {
+  font-size: 20px ;
+  
+}
+
+ul.polaroids li {
+  transform: rotate(-2deg);
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
 }
  
-.polaroids li:nth-child(even) a {
+ul.polaroids li:nth-child(even) {
+  transform: rotate(2deg);
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
 }
  
-.polaroids li:nth-child(3n) a {
+ul.polaroids li:nth-child(3n) {
+  transform: none;
   -webkit-transform: none;
   -moz-transform: none;
   position: relative;
   top: -5px;
 }
  
-.polaroids li:nth-child(5n) a {
+ul.polaroids li:nth-child(5n) {
+  transform: rotate(5deg);
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
   position: relative;
   right: 5px;
 }
  
-.polaroids li:nth-child(8n) a {
+ul.polaroids li:nth-child(8n) {
   position: relative;
   top: 8px;
   right: 5px;
 }
  
-.polaroids li:nth-child(11n) a {
+ul.polaroids li:nth-child(11n) {
   position: relative;
   top: 3px;
   left: -5px;
-}*/
+}
+
+ul.polaroids li:hover {
+  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  position: relative;
+  z-index: 5;
+}
+
+ul.polaroids li {
+  transition: -webkit-transform .15s linear;
+  -webkit-transition: -webkit-transform .15s linear;
+  box-shadow: 0 3px 6px rgba(0,0,0,.25);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+ 
+ul.polaroids li {
+  box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+}
 
 /********* FOOTER.html.erb *************/
 
 .footer {
   position: absolute;
   bottom: 0;
-  margin
+  /*clear: both;*/
 }
 
 .footer ul {
@@ -117,7 +166,7 @@
 
 .footer ul li {
   display: inline-block;
-  margin: auto 30px;
+  margin: 0 30px;
   font-size: 20px;
 
 }
@@ -149,4 +198,13 @@
 #terms p{
 
 }
+
+#results {
+  text-align: center;
+}
+
+.venue {
+  text-align: center;
+}
+
 

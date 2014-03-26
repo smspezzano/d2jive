@@ -1,5 +1,7 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
+  className: 'small-12 large-12 columns results_container',
+  id: 'overlay',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
@@ -8,16 +10,12 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
-    console.log(this.collection);
-
-   
+    this.listenTo(this.collection, 'sync', this.render); 
   },
 
-  render: function(collection){
-    this.$el.html(this.template(collection));
-    // $('bodyContainer').html(this.$el);
-    // console.log(venues); 
+  render: function(){
+    var venueObject = this.collection.toJSON();
+    this.$el.html(this.template({venues: venueObject}));
     return this; 
   },
 

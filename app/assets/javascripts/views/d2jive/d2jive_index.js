@@ -13,17 +13,13 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   },
 
   render: function(){
-    console.log("we are on the index page");
     $(this.el).html(this.template());
     return this;
   },
 
   getCollectionOfVenues: function() {
-    
-    var location = $("#city").val().replace(/\s+/g, '+');
 
-    // this.collection = new D2Jive.Collections.Venues( [], { location: address });
-     //var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: this.collection});
-     Backbone.history.navigate('venues?address='+location+'', {trigger: true});
+    var location = $("#city").val().replace(/\s+/g, '+');
+    Backbone.history.navigate('venues?address='+location+'', {trigger: true});
   },
 });

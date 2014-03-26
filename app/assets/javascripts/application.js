@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require handlebars.runtime
-//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require underscore
