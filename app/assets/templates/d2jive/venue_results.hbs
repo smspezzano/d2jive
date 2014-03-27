@@ -1,16 +1,15 @@
-<ul>
+<ul class='venueEvents'>
+  {{#each events}}
   <li>
-    {{name}}
+    {{displayName}}
     <a href={{uri}}>buy tix</a>
   </li>
   <li>
-    {{#each artists}}
-    {{name}}
-    <form class='artist'>
-      <input class='artistName' type=hidden value={{name}}>
-      <input type=submit value="Get Tracks">
-    </form>
-    {{billing}}
+    {{#each performance}}
+    Performer: {{displayName}}
+    Billing: {{billing}}
+    <button data-name="{{displayName}}">Discover {{displayName}}</button>
     {{/each}}
   </li>
+  {{/each}}
 </ul>

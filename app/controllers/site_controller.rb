@@ -10,6 +10,9 @@ class SiteController < ApplicationController
   def venue
   end
 
+  def event
+  end
+  
   def about_us
   end
 

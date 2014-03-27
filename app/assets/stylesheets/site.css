@@ -57,6 +57,12 @@
   left: 0px;
 }
 
+/********* D2Jive_venue_results.hbs *************/
+
+.venueEvents{
+  float: right;
+}
+
 #overlay {
   /* make the image a bit darker- a module look */
 }
