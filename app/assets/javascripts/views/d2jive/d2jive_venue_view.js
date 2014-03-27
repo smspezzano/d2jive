@@ -17,12 +17,8 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
     return this;
   },
 
-  alert: function(event){
-    
-    alert("this is my attr:" + event.currentTarget.id );
-  },
-
   getShows: function(event){
+  this.$el.siblings().remove();
   event.preventDefault();
   var query = window.location.search;
   var location = query.split("=")[1].replace(/\+/g, '%20');

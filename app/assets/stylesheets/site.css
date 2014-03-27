@@ -51,16 +51,16 @@
 
 /********* D2Jive_locale_results.hbs *************/
 
-.results_container{
+/*.results_container{
   height: 770px;
   top: 0;
   width: 100%; 
-  background-image: url('index.jpg');
-  /*background:rgba(0,0,0,.2);*/
+  background-image: url('index.jpg');*/
+  /*background:rgba(0,0,0,.2);
   background-repeat: no-repeat;
   position: absolute;
   left: 0px;
-}
+}*/
 
 /********* D2Jive_venue_results.hbs *************/
 
@@ -76,8 +76,6 @@
 ul.polaroids {
   margin-top: 80px;
   margin-left: -20px;
-  overflow-x: scroll;
-  overflow-y:hidden; 
 }
 
 ul.polaroids a:after {
