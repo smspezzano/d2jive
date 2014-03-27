@@ -1,21 +1,31 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   
-  className: 'small-12 large-12 columns results_container',
-  id: 'overlay',
+  tagName: 'ul',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
   events: {
     'click a': 'getShows',
+
   },
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render); 
+    var that = this;
+
+    this.listenTo(this.collection, "sync", this.render);
+    // this.listenTo(this.photoModel, 'sync', this.render); 
   },
 
   render: function(){
-    var venueObject = this.collection.toJSON();
-    this.$el.html(this.template({venues: venueObject}));
+  
+    _.each(
+      this.collection.models,
+      function(venue){
+        this.$el.append(new D2Jive.Views.D2JiveVenueView({model: venue}).render().$el);
+      },
+      this
+    );
+    
     return this; 
   },
 
@@ -30,6 +40,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
       $( this ).show();    
     });
   }
+
 });
 
 
