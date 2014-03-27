@@ -14,7 +14,6 @@ window.D2Jive = {
 
 var vent = _.extend({}, Backbone.Events);
 
-// console.log( vent );
 D2Jive.Router = Backbone.Router.extend({
 
   routes: {
@@ -31,23 +30,60 @@ D2Jive.Router = Backbone.Router.extend({
   },
 
   localeResults: function(params){
+      var self = this;
+
       var location = params.split("=")[1];
       
-      var collection = new D2Jive.Collections.Venues( [], { location: location });
-      var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: collection});
+      this.collection = new D2Jive.Collections.Venues( [], { location: location });
+
+      var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: this.collection});
        $('.bodyContainer').html(newResults.render().el);
   },
-
 
 });
 
 // Create a Venue Model that gets created on API call
 
 D2Jive.Models.Venue = Backbone.Model.extend({
-  defaults : {
+  
+  defaults: {
     name: '',
-    id: '',
+    venueId: '',
+    image_url: '',
+    location:'',
   },
+
+  initialize: function(attributes, options){
+    this.attributes.name = attributes.displayName;
+    this.attributes.venueId = attributes.id;
+    this.attributes.location = attributes.zip;
+    this.fetch();
+   },
+  
+   apikey: "EcbxC7m7v9bNWZg15Zi1UQ",
+   url: "http://api.yelp.com/business_review_search",
+
+
+  sync: function(method, model, options){
+       var that =this;
+       //console.log(this)
+      var params = _.extend({
+        type: 'GET',
+        dataType: 'jsonp',
+        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues", 
+      }, options);
+
+     return( $.ajax(params));
+   },
+   parse: function(resp, options){
+      try{
+      this.set({image_url: resp.businesses[0].photo_url});
+     return this;
+      } catch(e){}
+
+
+   }, 
+
 });
 
 // Create a collection of venus from Venue model
@@ -67,19 +103,18 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
       }, options);
 
-    return( $.ajax(params));
+
+     $.ajax(params);
+
+
   },
   parse: function(resp, options){
-    return resp.resultsPage.results.venue;
+    var venue = resp.resultsPage.results.venue;
+    return  venue;
   }, 
 });
 
-
-// below is an example used to test our collections request
-// window.venues20 = new D2Jive.Collections.Venues([], {location: "San, francisco, CA"} );
-// console.log(venues20.toJSON());
-
-// Create a Event Model that gets changed on API call
+// // Create a Event Model that gets changed on API call
 
 D2Jive.Models.Vent = Backbone.Model.extend({
   
