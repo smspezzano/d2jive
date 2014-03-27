@@ -28,8 +28,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     return this; 
   },
 
-  // Backbone.history.navigate('venue', {trigger: true});
-
 });
 
 

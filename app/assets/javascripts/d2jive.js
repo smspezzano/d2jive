@@ -14,7 +14,6 @@ window.D2Jive = {
 
 var vent = _.extend({}, Backbone.Events);
 
-// console.log( vent );
 D2Jive.Router = Backbone.Router.extend({
 
   routes: {
@@ -55,16 +54,9 @@ D2Jive.Models.Venue = Backbone.Model.extend({
   },
 
   initialize: function(attributes, options){
-      // //console.log(attributes);
-      this.attributes.name = attributes.displayName;
-       this.attributes.venueId = attributes.id;
-       this.attributes.location = attributes.zip;
-    //console.log(this);
-    // this.fetch();
-    // console.log("attributes");
-    // console.log(attributes);
-    // console.log("options");
-    // console.log(options);
+    this.attributes.name = attributes.displayName;
+    this.attributes.venueId = attributes.id;
+    this.attributes.location = attributes.zip;
     this.fetch();
    },
   
@@ -121,19 +113,6 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
     return  venue;
   }, 
 });
-
-// D2Jive.Models.Photo = Backbone.Model.extend({
-
-// });
-
-// D2Jive.Collections.Photos = Backbone.Collection.extend({
-//   model: D2Jive.Models.Photo,
-// });
-
-// window.venues20 = new D2Jive.Collections.Photos([],{location: location, term: "the fillmore"});
-// // below is an example used to test our collections request
-
-// // console.log(venues20.toJSON());
 
 // // Create a Event Model that gets changed on API call
 
