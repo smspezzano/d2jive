@@ -10,22 +10,21 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
   initialize: function () {
-    var that = this;
-
-    this.listenTo(this.collection, "sync", this.render);
-    // this.listenTo(this.photoModel, 'sync', this.render); 
+    this.listenTo(this.collection, 'sync', _.throttle(this.render, (2000)));
   },
 
   render: function(){
-  
+    this.$el.empty();
+    var i=0;  
     _.each(
       this.collection.models,
       function(venue){
+        i++;
         this.$el.append(new D2Jive.Views.D2JiveVenueView({model: venue}).render().$el);
       },
       this
     );
-    
+    console.log(i); 
     return this; 
   },
 

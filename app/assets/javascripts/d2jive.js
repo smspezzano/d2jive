@@ -92,8 +92,6 @@ D2Jive.Models.Venue = Backbone.Model.extend({
       this.set({image_url: resp.businesses[0].photo_url});
      return this;
       } catch(e){}
-
-
    }, 
 
 });
@@ -103,7 +101,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 D2Jive.Collections.Venues = Backbone.Collection.extend({
   initialize: function(attributes, options){
     this.city = options.location;
-    this.fetch();
+    this.fetch({data: {page: 3}, add: true});
   },
   model: D2Jive.Models.Venue,
   apikey: "4ash2icfOuY4R7v5" ,
