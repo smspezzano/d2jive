@@ -41,7 +41,7 @@ D2Jive.Router = Backbone.Router.extend({
     var venueId = params.split("=")[2];
     var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
     var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
-    $('.bodyContainer').append(eventResults.render().el);
+    $('.bodyContainer').html(eventResults.render().el);
   },
 
   getTracks: function(params){
@@ -101,7 +101,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 D2Jive.Collections.Venues = Backbone.Collection.extend({
   initialize: function(attributes, options){
     this.city = options.location;
-    this.fetch({data: {page: 3}, add: true});
+    this.fetch();
   },
   model: D2Jive.Models.Venue,
   apikey: "4ash2icfOuY4R7v5" ,
