@@ -1,5 +1,5 @@
 D2Jive.Views.D2JiveTrackResults = Backbone.View.extend({
-  id: 'trackResults',
+  className: 'trackResults',
 
   template: HandlebarsTemplates['d2jive/tracks'],
 
@@ -10,6 +10,7 @@ D2Jive.Views.D2JiveTrackResults = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.empty();
     var spotifyObject = this.collection.toJSON();
     var trackArray = [];
     var grabbedTrack;
@@ -20,7 +21,7 @@ D2Jive.Views.D2JiveTrackResults = Backbone.View.extend({
     trackObject = {
       tracks: trackArray
     };
-    this.$el.html(this.template(trackObject));
+    this.$el.append(this.template(trackObject));
     return this; 
   },
 
