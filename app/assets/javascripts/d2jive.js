@@ -82,7 +82,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues", 
+        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues"
       }, options);
 
      return( $.ajax(params));
@@ -96,8 +96,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 
 });
 
-// Create a collection of venus from Venue model
-
+// Create a collection of venues from Venue model
 D2Jive.Collections.Venues = Backbone.Collection.extend({
   initialize: function(attributes, options){
     this.city = options.location;
@@ -111,10 +110,11 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
   sync: function(method, model, options){
     var that = this;
       var params = _.extend({
-          //if in localhost take out 'dataType'
-          dataType: 'jsonp',
+          //if in localhost take out 'dataType
           type: 'GET',
+          dataType: 'jsonp',
           url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
+          jsonp: 'jsoncallback'
       }, options);
 
 
@@ -155,9 +155,9 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           //if in localhost take out 'dataType'
-          dataType: 'jsonp',
           type: 'GET',
-          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey,
+          dataType: 'jsonp',
+          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey +'&jsoncallback=?'
       }, options);
 
     return( $.ajax(params));
@@ -190,7 +190,6 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           //if in localhost take out 'dataType'
-          dataType: 'jsonp',
           type: 'GET',
           url: that.url + '.json?q=' + encodeURIComponent(that.artistName),
       }, options);
