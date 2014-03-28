@@ -1,11 +1,11 @@
 D2Jive.Views.D2JiveEventView = Backbone.View.extend({
   
-  id: 'venueResults',
+  tagName: 'li',
 
   template: HandlebarsTemplates['d2jive/event_view'],
 
   events: {
-    'click a': 'showTracks',
+    'click a': 'getTracks',
   },
 
   initialize: function () {
@@ -20,9 +20,8 @@ D2Jive.Views.D2JiveEventView = Backbone.View.extend({
 
   getTracks: function(event){
     event.preventDefault();
-    // (".trackResults").slideToggle("slow");
     var artistName = $(event.currentTarget).data("name");
-    Backbone.history.navigate('event?artist='+ artistName);
+    // Backbone.history.navigate('event?artist='+ artistName);
     this.showTracks(artistName);
   },
 

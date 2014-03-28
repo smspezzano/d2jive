@@ -28,7 +28,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   getShows: function(event){
     event.preventDefault();
     this.stopListening(this.collection);
-    this.$el.replaceWith(function() {
+    this.$el.children().remove(function() {
       return event.currentTarget; 
     });
     var query = window.location.search;

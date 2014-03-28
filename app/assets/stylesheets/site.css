@@ -170,6 +170,14 @@ ul.polaroids li {
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
+
+/********* VIEW WITH SPOTIFY PLAYLIST *****/
+
+.spotifyPlaylist {
+  margin-left: -40px;
+  /*display: none;*/
+}
+
 /********* FOOTER.html.erb *************/
 
 .footer {

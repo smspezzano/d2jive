@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Use sidekiq and sidetiq for workers
 gem 'sidekiq'

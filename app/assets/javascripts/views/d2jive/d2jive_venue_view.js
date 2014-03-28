@@ -3,7 +3,7 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-  
+    
   },
 
   template: HandlebarsTemplates['d2jive/venue_view'],
