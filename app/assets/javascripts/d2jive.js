@@ -115,7 +115,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
           dataType: 'jsonp',
-          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey + '&jsoncallback=?'
+          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey + '&jsoncallback=parse?'
           // processData: false
       }, options);
 
