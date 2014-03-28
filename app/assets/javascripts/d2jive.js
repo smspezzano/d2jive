@@ -78,7 +78,6 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 
   sync: function(method, model, options){
        var that =this;
-       //console.log(this)
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
