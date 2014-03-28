@@ -1,3 +1,9 @@
+/*.bodyContainer{
+  height: 100%;
+  position: absolute;
+}*/
+
+
 /********* HEADER.html.erb *************/
 
 .header {
@@ -25,13 +31,12 @@
 
 .searchbar {
   height: 770px;
-  top:0;
+  top:-150px;
   width: 100%; 
   text-align:center;
   background-image: url('index.jpg');
   background-repeat: no-repeat;
   position: absolute;
-  left: 0px;
   box-shadow: 0 4px 0 gray;
   
 }
@@ -46,16 +51,16 @@
 
 /********* D2Jive_locale_results.hbs *************/
 
-.results_container{
+/*.results_container{
   height: 770px;
   top: 0;
   width: 100%; 
-  background-image: url('index.jpg');
-  /*background:rgba(0,0,0,.2);*/
+  background-image: url('index.jpg');*/
+  /*background:rgba(0,0,0,.2);
   background-repeat: no-repeat;
   position: absolute;
   left: 0px;
-}
+}*/
 
 /********* D2Jive_venue_results.hbs *************/
 
@@ -66,8 +71,11 @@
 #overlay {
   /* make the image a bit darker- a module look */
 }
+
+
 ul.polaroids {
   margin-top: 80px;
+  margin-left: -20px;
 }
 
 ul.polaroids a:after {
@@ -84,11 +92,13 @@ ul.polaroids li {
 
 }
 ul.polaroids img { 
-  display: block; 
+  display: block;
   margin-bottom: 12px;
-  /* add the padding below to emmulate an img being in its place for now */
-  padding-top: 170px;
+  margin: 30px 10px 5px 50px;
+  width: 150px;
+  height: 150px;
 }
+
 
 ul.polaroids li a {
   font-size: 20px ;

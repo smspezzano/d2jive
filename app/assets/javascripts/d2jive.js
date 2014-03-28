@@ -41,7 +41,7 @@ D2Jive.Router = Backbone.Router.extend({
     var venueId = params.split("=")[2];
     var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
     var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
-    $('.bodyContainer').append(eventResults.render().el);
+    $('.eventContainer').html(eventResults.render().el);
   },
 
   getTracks: function(params){
@@ -92,8 +92,6 @@ D2Jive.Models.Venue = Backbone.Model.extend({
       this.set({image_url: resp.businesses[0].photo_url});
      return this;
       } catch(e){}
-
-
    }, 
 
 });
