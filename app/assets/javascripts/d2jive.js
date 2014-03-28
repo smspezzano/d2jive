@@ -20,7 +20,7 @@ D2Jive.Router = Backbone.Router.extend({
     
     "": "home",                     // #
     "venues": "localeResults",      // #venues/san+francisco+ca
-    "venue" : "showResults",        // #venues/san+francisco+ca/7869/events
+    "venue" : "showResults",        // #venue/san+francisco+ca/7869/events
     "event" : "getTracks"
 
   },
@@ -39,13 +39,21 @@ D2Jive.Router = Backbone.Router.extend({
 
   showResults: function(params){
     var venueId = params.split("=")[2];
+<<<<<<< HEAD
+    this.collection = new D2Jive.Collections.Vents( [], {venueId: venueId});
+    var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: this.collection});
+    $('.bodyContainer').html(eventResults.render().el);
+    return eventResults;
+
+=======
     var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
     var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
     $('.eventContainer').html(eventResults.render().el);
+>>>>>>> e2bd026bf2343f1cf579c92e08f0bd693456aa99
   },
 
   getTracks: function(params){
-    var artistName = params.split("=")[1].replace(/\s+/g, ',');
+    var artistName = params.split("=")[1];
     var trackCollection = new D2Jive.Collections.Tracks( [], {artistName: artistName});
     var trackResults = new D2Jive.Views.D2JiveTrackResults({ collection: trackCollection});
     $('.bodyContainer').append(trackResults.render().el);
@@ -103,6 +111,8 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
     this.city = options.location;
     this.fetch();
   },
+
+
   model: D2Jive.Models.Venue,
   apikey: "4ash2icfOuY4R7v5" ,
   url: "http://api.songkick.com/api/3.0/search/venues",
@@ -131,8 +141,8 @@ D2Jive.Models.Vents = Backbone.Model.extend({
   defaults : {
     name: '',
     uri: '',
-    artists: '',
-  }, 
+    artists: ''
+  }
 
 });
 
@@ -158,11 +168,11 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
   },
   parse: function(resp, options){
     return resp.resultsPage.results.event;
-  }, 
+  }
 
 });
 
-// Create a Tracks Model that gets changed on API call
+//Create a Tracks Model that gets changed on API call
 
 D2Jive.Models.Tracks = Backbone.Model.extend({
   
@@ -184,7 +194,7 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           type: 'GET',
-          url: that.url + '.json?q=' + that.artistName,
+          url: that.url + '.json?q=' + encodeURIComponent(that.artistName),
       }, options);
 
     return( $.ajax(params));
@@ -207,4 +217,3 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
 $(document).ready(function(){
   D2Jive.initialize();
 });
-

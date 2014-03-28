@@ -6,25 +6,23 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
 
   template: HandlebarsTemplates['d2jive/venue_results'],
 
-  events: {
-    'click button': 'getTracks',
-  },
-
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render); 
+    this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function(){
-    var eventObject = this.collection.toJSON();
-    this.$el.append(this.template({events: eventObject}));
+    this.$el.empty();
+    var i=0;  
+    _.each(
+      this.collection.models,
+      function(show){
+        i++;
+        this.$el.append(new D2Jive.Views.D2JiveEventView({model: show}).render().$el);
+      },
+      this
+    );
+    console.log(i); 
     return this; 
   },
-
-  getTracks: function(event){
-    event.preventDefault();
-    var artistName = $(event.currentTarget).data("name");
-    Backbone.history.navigate('event?artist='+ artistName, {trigger: true});
-
-  }
 
 });

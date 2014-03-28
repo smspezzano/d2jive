@@ -11,16 +11,11 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', _.throttle(this.render, (2000)));
+
   },
 
   render: function(){
     this.$el.empty();
-    //if we are just rendering one venue:(if this.model)
-    // if {
-
-    //   //make a view
-    // }, else {
-    // else we are still rendering everything: ()
     _.each(
       this.collection.models,
       function(venue){
@@ -28,6 +23,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
       },
       this
     );
+
     return this; 
   },
 
@@ -45,8 +41,3 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   },
 
 });
-
-
-
-
-
