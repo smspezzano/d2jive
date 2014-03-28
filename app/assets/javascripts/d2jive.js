@@ -193,9 +193,7 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
       var params = _.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
-          dataType: 'jsonp',
           url: that.url + '.json?q=' + encodeURIComponent(that.artistName),
-          processData: false
       }, options);
 
     return( $.ajax(params));
