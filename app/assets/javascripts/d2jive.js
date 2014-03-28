@@ -82,8 +82,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues",
-        processData: false 
+        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues"
       }, options);
 
      return( $.ajax(params));
@@ -158,8 +157,7 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
           dataType: 'jsonp',
-          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey +'&jsoncallback=?',
-          processData: false
+          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey +'&jsoncallback=?'
       }, options);
 
     return( $.ajax(params));
