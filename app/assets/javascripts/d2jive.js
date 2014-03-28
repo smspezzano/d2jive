@@ -82,7 +82,8 @@ D2Jive.Models.Venue = Backbone.Model.extend({
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues", 
+        url: that.url + "?term=" + that.attributes.name + "&location=" + that.attributes.location + "&ywsid=" + that.apikey +"&category=musicvenues",
+        processData: false 
       }, options);
 
      return( $.ajax(params));
@@ -115,6 +116,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           type: 'GET',
           dataType: 'jsonp',
           url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
+          processData: false
       }, options);
 
 
@@ -158,6 +160,7 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
           type: 'GET',
           dataType: 'jsonp',
           url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey,
+          processData: false
       }, options);
 
     return( $.ajax(params));
@@ -193,6 +196,7 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
           type: 'GET',
           dataType: 'jsonp',
           url: that.url + '.json?q=' + encodeURIComponent(that.artistName),
+          processData: false
       }, options);
 
     return( $.ajax(params));
