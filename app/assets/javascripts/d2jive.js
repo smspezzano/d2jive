@@ -27,14 +27,14 @@ D2Jive.Router = Backbone.Router.extend({
 
   home: function() {
     var view = new D2Jive.Views.D2JiveIndex({});
-    $('.bodyContainer').html(view.render().el);
+    $('.searchContainer').html(view.render().el);
   },
 
   localeResults: function(params){
     var location = params.split("=")[1];
     this.collection = new D2Jive.Collections.Venues( [], { location: location });
     var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: this.collection});
-     $('.bodyContainer').html(newResults.render().el);
+     $('.resultsContainer').html(newResults.render().el);
   },
 
   showResults: function(params){
@@ -78,7 +78,6 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 
   sync: function(method, model, options){
        var that =this;
-       //console.log(this)
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',

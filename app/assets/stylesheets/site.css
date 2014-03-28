@@ -2,14 +2,19 @@
 
 /*.trackResults{
   display: none;
+}*/
 
 /*.bodyContainer{
   height: 100%;
   position: absolute;
-}*/
+}
 
 
 /********* HEADER.html.erb *************/
+/*
+.body {
+  background-color: #ecf0f1;
+}*/
 
 .header {
   margin-top: -30px;
@@ -39,10 +44,11 @@
   top:-150px;
   width: 100%; 
   text-align:center;
-  background-image: url('index.jpg');
+  background-image: url('public/index.jpg');
   background-repeat: no-repeat;
   position: absolute;
   box-shadow: 0 4px 0 gray;
+  left: 0;
   
 }
 
@@ -78,14 +84,6 @@
 }
 
 
-ul.polaroids {
-  margin-top: 80px;
-  margin-left: -20px;
-}
-
-ul.polaroids a:after {
-  content: attr(title);
-}
 
 ul.polaroids li {
   width: 285px;
@@ -172,12 +170,23 @@ ul.polaroids li {
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
+
+/********* VIEW WITH SPOTIFY PLAYLIST *****/
+
+.spotifyPlaylist {
+  margin-left: -40px;
+  /*display: none;*/
+}
+
 /********* FOOTER.html.erb *************/
 
 .footer {
-  position: absolute;
+  width: 100%;
+  position: fixed;
+  height:60px;
   bottom: 0;
-  /*clear: both;*/
+  left: 0;
+  clear: both;
 }
 
 .footer ul {

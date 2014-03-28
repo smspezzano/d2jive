@@ -1,0 +1,16 @@
+
+  <form>
+    <div class="small-5 small-offset-6 columns">
+      <div class="small-4 columns">
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <input id="city" type="text" placeholder='Find live events near you e.g San Francisco, CA' />
+          </div>
+          <div class="small-3 columns">
+            <a href="" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
