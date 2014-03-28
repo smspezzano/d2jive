@@ -115,7 +115,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
           dataType: 'jsonp',
-          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
+          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey + '&jsoncallback=?',
           processData: false
       }, options);
 
@@ -159,7 +159,7 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
           dataType: 'jsonp',
-          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey,
+          url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey +'&jsoncallback=?',
           processData: false
       }, options);
 
