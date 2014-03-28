@@ -27,7 +27,7 @@ D2Jive.Router = Backbone.Router.extend({
 
   home: function() {
     var view = new D2Jive.Views.D2JiveIndex({});
-    $('.bodyContainer').html(view.render().el);
+    $('.searchContainer').html(view.render().el);
   },
 
   localeResults: function(params){
