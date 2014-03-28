@@ -11,7 +11,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', _.throttle(this.render, (2000)));
-
   },
 
   render: function(){
@@ -23,16 +22,14 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
       },
       this
     );
-
     return this; 
   },
 
-// in getShows this.model =  that one venue OR this.stopListi
   getShows: function(event){
     event.preventDefault();
     this.stopListening(this.collection);
     this.$el.replaceWith(function() {
-    return event.currentTarget; 
+      return event.currentTarget; 
     });
     var query = window.location.search;
     var location = query.split("=")[1].replace(/\+/g, '%20');

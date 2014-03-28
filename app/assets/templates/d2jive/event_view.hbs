@@ -1,8 +1,9 @@
-<h6>
-  {{displayName}} <a href="{{uri}}"> Buy Tickets</a>
+<h4>
+  {{displayName}} 
 </h6>
-{{tracks}}
+<p><a href="{{uri}}"> Buy Tickets</a><p>
+
 
 {{#each performance}}
-  <button id="{{displayName}}" data-name="{{displayName}}">Discover {{displayName}}<br> the {{billing}}</button>
+  <a class="button [radius round]" id="{{displayName}}" data-name="{{displayName}}">Discover {{displayName}}<br> the {{billing}}</a>
 {{/each}}
