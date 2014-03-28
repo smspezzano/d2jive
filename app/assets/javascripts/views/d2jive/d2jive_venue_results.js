@@ -1,5 +1,8 @@
 D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
-  id: 'venueResults',
+  
+
+  tagName: 'ul',
+  className: 'venueEvents',
 
   template: HandlebarsTemplates['d2jive/venue_results'],
 
@@ -21,6 +24,5 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
     console.log(i); 
     return this; 
   },
-
 
 });

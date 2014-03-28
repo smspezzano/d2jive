@@ -39,11 +39,17 @@ D2Jive.Router = Backbone.Router.extend({
 
   showResults: function(params){
     var venueId = params.split("=")[2];
+<<<<<<< HEAD
     this.collection = new D2Jive.Collections.Vents( [], {venueId: venueId});
     var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: this.collection});
     $('.bodyContainer').html(eventResults.render().el);
     return eventResults;
 
+=======
+    var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
+    var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
+    $('.eventContainer').html(eventResults.render().el);
+>>>>>>> e2bd026bf2343f1cf579c92e08f0bd693456aa99
   },
 
   getTracks: function(params){
