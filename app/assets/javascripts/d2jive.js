@@ -34,7 +34,7 @@ D2Jive.Router = Backbone.Router.extend({
     var location = params.split("=")[1];
     this.collection = new D2Jive.Collections.Venues( [], { location: location });
     var newResults = new D2Jive.Views.D2JiveLocaleResults({collection: this.collection});
-    $('.bodyContainer').html(newResults.render().el);
+    $('.resultsContainer').html(newResults.render().el);
   },
 
   showResults: function(params){
