@@ -112,8 +112,8 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           //if in localhost take out 'dataType'
-          dataType: 'jsonp',
           type: 'GET',
+          dataType: 'jsonp',
           url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
       }, options);
 
@@ -155,8 +155,8 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           //if in localhost take out 'dataType'
-          dataType: 'jsonp',
           type: 'GET',
+          dataType: 'jsonp',
           url: that.url +  that.venueId + '/calendar.json?apikey=' + that.apikey,
       }, options);
 
@@ -190,8 +190,8 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
     var that = this;
       var params = _.extend({
           //if in localhost take out 'dataType'
-          dataType: 'jsonp',
           type: 'GET',
+          dataType: 'jsonp',
           url: that.url + '.json?q=' + encodeURIComponent(that.artistName),
       }, options);
 
