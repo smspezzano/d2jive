@@ -97,8 +97,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
 
 });
 
-// Create a collection of venus from Venue model
-
+// Create a collection of venues from Venue model
 D2Jive.Collections.Venues = Backbone.Collection.extend({
   initialize: function(attributes, options){
     this.city = options.location;
@@ -112,9 +111,11 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
   sync: function(method, model, options){
     var that = this;
       var params = _.extend({
-          //if in localhost take out 'dataType'
+          //if in localhost take out 'dataType
           type: 'GET',
-          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey
+          dataType: 'jsonp',
+          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
+          jsonp: 'jsoncallback'
       }, options);
 
 
