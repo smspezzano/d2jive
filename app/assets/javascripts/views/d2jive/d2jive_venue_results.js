@@ -1,6 +1,5 @@
 D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
   
-
   tagName: 'ul',
   className: 'venueEvents',
 
@@ -11,17 +10,14 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.empty();
-    var i=0;  
+    this.$el.empty(); 
     _.each(
       this.collection.models,
       function(show){
-        i++;
         this.$el.append(new D2Jive.Views.D2JiveEventView({model: show}).render().$el);
       },
       this
     );
-    console.log(i); 
     return this; 
   },
 

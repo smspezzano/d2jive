@@ -11,7 +11,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', _.throttle(this.render, (2000)));
-
   },
 
   render: function(){
@@ -19,20 +18,21 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     _.each(
       this.collection.models,
       function(venue){
+
         this.$el.append(new D2Jive.Views.D2JiveVenueView({model: venue}).render().$el);
       },
       this
     );
-
     return this; 
   },
-
-// in getShows this.model =  that one venue OR this.stopListi
+  setVenueId: function(id){
+    this.model = id;
+  },
   getShows: function(event){
     event.preventDefault();
     this.stopListening(this.collection);
-    this.$el.replaceWith(function() {
-    return event.currentTarget; 
+    this.$el.children().replaceWith(function(){
+      return event.currentTarget.parentElement;
     });
     var query = window.location.search;
     var location = query.split("=")[1].replace(/\+/g, '%20');

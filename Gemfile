@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Kaminari for pagination 
 gem 'kaminari'
