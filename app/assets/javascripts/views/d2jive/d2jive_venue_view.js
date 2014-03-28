@@ -5,7 +5,7 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
   template: HandlebarsTemplates['d2jive/venue_view'],
   
   events: {
-    'click a': 'getShows',
+    // 'click a': 'getShows',
   },
   initialize: function(){
     this.listenTo(this.model, 'sync', this.render);
@@ -17,13 +17,14 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
     return this;
   },
 
-  getShows: function(event){
-  this.$el.siblings().remove();
-  event.preventDefault();
-  var query = window.location.search;
-  var location = query.split("=")[1].replace(/\+/g, '%20');
-  var venueId = event.currentTarget.id;
-  Backbone.history.navigate('venue?address='+ location + '?venue=' + venueId+'', {trigger: true});
-  },
+  // getShows: function(event){
+  // event.preventDefault();
+  // this.stopListening(this.model);
+  // this.$el.siblings().remove();
+  // var query = window.location.search;
+  // var location = query.split("=")[1].replace(/\+/g, '%20');
+  // var venueId = event.currentTarget.id;
+  // Backbone.history.navigate('venue?address='+ location + '?venue=' + venueId+'', {trigger: true});
+  // },
 
 });
