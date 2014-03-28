@@ -114,9 +114,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
       var params = _.extend({
           //if in localhost take out 'dataType'
           type: 'GET',
-          dataType: 'jsonp',
-          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
-          success: function(resp){alert(resp);}
+          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey
       }, options);
 
 
