@@ -33,19 +33,8 @@ gem 'font-awesome-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Use sidekiq and sidetiq for workers
-gem 'sidekiq'
-gem 'sidetiq'
-
-# Use unicorn as the app server
-gem 'unicorn'
-
-gem 'typhoeus'
-
 # Kaminari for pagination 
 gem 'kaminari'
-
-
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
