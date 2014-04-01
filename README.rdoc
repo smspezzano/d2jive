@@ -1,28 +1,8 @@
-== README
+D2Jive.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Created by Spencer Spezzano and Drew Monroe.
 
-Things you may want to cover:
+This was our final project of our 3 month course in General Assembly's WDI program.  The app was built in our final week with backbone.js on rails.  
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+We used Songkick, Yelp and Spotify APIs to create a search engine for anyone, anywhere to find a nearby venue and the venue's upcoming live events.  A user has the additional option of being able to listen to some of the artist's music on a spotfiy wdiget or can be reidrected to buy tickets if applicable for the event.
+ 

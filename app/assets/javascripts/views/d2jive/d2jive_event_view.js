@@ -13,6 +13,7 @@ D2Jive.Views.D2JiveEventView = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.empty();
     var eventObject = this.model.toJSON();
     this.$el.html(this.template(eventObject));
     return this; 
