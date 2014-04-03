@@ -45,6 +45,7 @@
   width: 100%; 
   text-align:center;
   background-image: url('http://i62.tinypic.com/bjiqky.jpg');
+ /* background-image: url('public/index.jpg');*/
   background-repeat: no-repeat;
   position: absolute;
   box-shadow: 0 4px 0 gray;
@@ -74,10 +75,6 @@
 }*/
 
 /********* D2Jive_venue_results.hbs *************/
-
-.venueEvents{
-  float: right;
-}
 
 #overlay {
   /* make the image a bit darker- a module look */
@@ -170,6 +167,14 @@ ul.polaroids li {
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
+/********* VIEW WITH VENUE ON LEFT AND EVENTS ON THE RIGHT *****/
+
+ul.venueEvents {
+  list-style: none;
+  float: right;
+  margin-top: -300px;
+  
+}
 
 /********* VIEW WITH SPOTIFY PLAYLIST *****/
 
