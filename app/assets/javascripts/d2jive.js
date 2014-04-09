@@ -89,7 +89,11 @@ D2Jive.Models.Venue = Backbone.Model.extend({
    },
    parse: function(resp, options){
       try{
-      this.set({image_url: resp.businesses[0].photo_url});
+        if (resp.businesses[0] === undefined) {
+          this.set({image_url: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png'});
+        } else {
+          this.set({image_url: resp.businesses[0].photo_url});
+        }
      return this;
       } catch(e){}
    }, 

@@ -45,9 +45,10 @@
   width: 100%; 
   text-align:center;
   background-image: url('http://i62.tinypic.com/bjiqky.jpg');
- /* background-image: url('public/index.jpg');*/
+ /* background-image: image-url('public/index.jpg');*/
   background-repeat: no-repeat;
   position: absolute;
+  background-size: cover;
   box-shadow: 0 4px 0 gray;
   left: 0;
   
@@ -79,7 +80,6 @@
 #overlay {
   /* make the image a bit darker- a module look */
 }
-
 
 
 ul.polaroids li {
@@ -242,4 +242,25 @@ ul.venueEvents {
   text-align: center;
 }
 
+@media only screen and (min-width: 1000px) {
+  .searchbar form{  
+    margin-top: 20%;
+  }
+}
+
+@media only screen  and (max-width: 999px) and (min-width : 569px) {
+  .searchbar form{  
+    margin-top: 40%;
+  }
+}
+
+@media only screen  and (max-width: 568px) and (min-width : 328px) {
+  .searchbar form{  
+    margin-top: 60%;
+  }
+
+  #logo h1 {
+    font-size: 60px;
+  }
+}
 
