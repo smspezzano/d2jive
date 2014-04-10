@@ -12,7 +12,8 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
   },
 
   showPhoto: function(){
-    $(this.el).append(this.template({model: this.venuePhoto.models[0].attributes}));
+    var singleVenue = this.venuePhoto.models[0].toJSON();
+    $(this.el).append(this.template(singleVenue));
   },
 
   render: function(){
