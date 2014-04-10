@@ -38,8 +38,15 @@ D2Jive.Router = Backbone.Router.extend({
   },
 
   showResults: function(params){
-    var venueId = params.split("=")[2];
+    var venue = params.split("=")[2];
+    var venueId = venue.split(',')[0];
     var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
+    var venueLocation = params.split("=")[1];
+    var venueName = venue.split(',')[1];
+    var venuePhoto = new D2Jive.Collections.VenuePhoto ([], {
+      venueLocation: venueLocation,
+      venueName: venueName
+    });
     var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
     $('.eventContainer').html(eventResults.render().el);
   },
@@ -96,7 +103,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
         }
      return this;
       } catch(e){}
-   }, 
+   } 
 
 });
 
@@ -131,6 +138,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
     return  venue;
   }, 
 });
+
 
 // // Create a Event Model that gets changed on API call
 
@@ -172,6 +180,53 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
 
 });
 
+//Create a single venue Model that gets created after a yelp API call
+
+D2Jive.Models.VenuePhoto = Backbone.Model.extend({
+  
+  defaults : {
+    href: '',
+  }, 
+
+});
+
+//Create a single venue collection to grab yelp photo 
+
+D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
+  initialize: function(attributes, options){
+    this.venueLocation = options.venueLocation;
+    this.venueName = options.venueName;
+    this.fetch();
+  },
+
+
+  apikey: "FMU0kKzY0nkNw61uFSpTfA",
+  url: "http://api.yelp.com/business_review_search",
+
+  sync: function(method, model, options){
+       var that =this;
+       //console.log(this)
+      var params = _.extend({
+        type: 'GET',
+        dataType: 'jsonp',
+        url: that.url + "?term=" + that.venueName + "&location=" + that.venueLocation + "&ywsid=" + that.apikey +"&category=musicvenues"
+      }, options);
+
+     return( $.ajax(params));
+   },
+   parse: function(resp, options){
+      try{
+        if (resp.businesses[0] === undefined) {
+          this.set({image_url: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png'});
+        } else {
+          this.set({image_url: resp.businesses[0].photo_url});
+        }
+     return this;
+      } catch(e){}
+   }, 
+});
+
+
 //Create a Tracks Model that gets changed on API call
 
 D2Jive.Models.Tracks = Backbone.Model.extend({
@@ -203,7 +258,7 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
   parse: function(resp, options){
     spotifyResp = resp.tracks.slice(0,9);
     return spotifyResp;
-  }, 
+  } 
 
 });
 

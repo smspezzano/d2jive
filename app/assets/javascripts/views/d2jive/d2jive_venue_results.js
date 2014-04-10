@@ -10,7 +10,8 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.empty(); 
+    this.$el.empty();
+    $(this.el).html(this.template({collection: this.venue})); 
     _.each(
       this.collection.models,
       function(show){
