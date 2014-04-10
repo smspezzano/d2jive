@@ -31,9 +31,10 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
   getShows: function(event){
     event.preventDefault();
     this.stopListening(this.collection);
-    this.$el.children().replaceWith(function(){
-      return event.currentTarget.parentElement;
-    });
+    this.$el.empty();
+    // this.$el.children().replaceWith(function(){
+    //   return event.currentTarget.parentElement;
+    // });
     var query = window.location.search;
     var location = query.split("=")[1].replace(/\+/g, '%20');
     var venueId = event.currentTarget.id;

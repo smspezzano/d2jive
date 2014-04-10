@@ -51,6 +51,7 @@ D2Jive.Router = Backbone.Router.extend({
       collection: eventCollection,
       venue: venuePhoto
     });
+    $('.resultsContainer').html("");
     $('.eventContainer').html(eventResults.render().el);
   },
 
