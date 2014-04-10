@@ -5,7 +5,7 @@ D2Jive.Views.D2JiveEventView = Backbone.View.extend({
   template: HandlebarsTemplates['d2jive/event_view'],
 
   events: {
-    'click a': 'getTracks',
+    'click #artist': 'getTracks',
   },
 
   initialize: function () {

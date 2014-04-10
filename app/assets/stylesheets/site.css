@@ -172,7 +172,7 @@ ul.polaroids li {
 ul.venueEvents {
   list-style: none;
   float: right;
-  margin-top: -300px;
+  /*margin-top: -300px;*/
   
 }
 
