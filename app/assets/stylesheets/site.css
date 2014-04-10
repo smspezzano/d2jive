@@ -219,11 +219,13 @@ div.eventContainer .venuePhoto {
 
 .footer {
   width: 100%;
-  position: fixed;
+  /*position: fixed;*/
   height:60px;
   bottom: 0;
   left: 0;
   clear: both;
+  margin-top: 5px;
+  position: relative;
 }
 
 .footer ul {
@@ -235,8 +237,13 @@ div.eventContainer .venuePhoto {
   display: inline-block;
   margin: 0 30px;
   font-size: 20px;
-
 }
+
+.songkick {
+  height: 25px;
+  width: 100px;
+}
+
 
 /******* ABOUT.html.erb *************/
 
