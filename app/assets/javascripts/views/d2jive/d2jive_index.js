@@ -14,9 +14,11 @@ D2Jive.Views.D2JiveIndex = Backbone.View.extend({
   },
 
   processKey: function(event) { 
-    if(event.keyCode == 13){
+    if(event.keyCode === 13){
       var location = $("#city").val().replace(/\s+/g, '+');
       Backbone.history.navigate('venues?address='+location+'', {trigger: true});
+    } else {
+      return;
     }
   },
 
