@@ -17,6 +17,6 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
     this.$el.html(this.template(singleVenue));
 
     return this; 
-  },
+  }
 
 });

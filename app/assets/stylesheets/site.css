@@ -102,7 +102,6 @@ ul.polaroids img {
 
 ul.polaroids li a {
   font-size: 20px ;
-  
 }
 
 ul.polaroids li {
@@ -169,18 +168,51 @@ ul.polaroids li {
 
 /********* VIEW WITH VENUE ON LEFT AND EVENTS ON THE RIGHT *****/
 
-ul.venueEvents {
+div.eventContainer ul {
   list-style: none;
   float: right;
-  margin-top: -300px;
-  
+}
+
+div.eventContainer li.venuePhoto {
+  font-size: 20px ;
+  list-style: none;
+  position: fixed;
+}
+
+div.eventContainer img {
+  display: block;
+  margin-bottom: 12px;
+  margin: 30px 10px 5px 50px;
+  width: 150px;
+  height: 150px;
+}
+
+div.eventContainer li.venuePhoto {
+  transform: rotate(-2deg);
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+}
+
+div.eventContainer li.venuePhoto {
+  width: 285px;
+  height: 250px;
+  border: 1px solid #fff;
+  text-align: center;
+  margin: 45px 45px 45px 55px;
+  background-color: #fff;
+
+}
+ 
+div.eventContainer .venuePhoto {
+  box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
 /********* VIEW WITH SPOTIFY PLAYLIST *****/
 
 .spotifyPlaylist {
   margin-left: -40px;
-  /*display: none;*/
 }
 
 /********* FOOTER.html.erb *************/
@@ -252,6 +284,12 @@ ul.venueEvents {
   .searchbar form{  
     margin-top: 40%;
   }
+
+
+  div.eventContainer li.venuePhoto {
+    position: static;
+  }
+
 }
 
 @media only screen  and (max-width: 568px) and (min-width : 328px) {
@@ -261,6 +299,10 @@ ul.venueEvents {
 
   #logo h1 {
     font-size: 60px;
+  }
+
+  div.eventContainer li.venuePhoto {
+    position: static;
   }
 }
 
