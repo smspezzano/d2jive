@@ -37,6 +37,13 @@
   width:350px;
 }
 
+/********** footer.html.erb **************/
+
+.songkick {
+  height: 25px;
+  width: 100px;
+}
+
 /********* D2Jive_index.hbs *************/
 
 .searchbar {
