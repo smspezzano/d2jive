@@ -25,10 +25,6 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
     );
     return this; 
   },
-  
-  // setVenueId: function(id){
-  //   this.model = id;
-  // },
 
   getShows: function(event){
     event.preventDefault();

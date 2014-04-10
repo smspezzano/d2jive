@@ -221,14 +221,6 @@ D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
      return( $.ajax(params));
    },
    parse: function(resp, options){
-     //  try{
-     //    if (resp.businesses[0] === undefined) {
-     //      this.set({href: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png'});
-     //    } else {
-     //      this.set({href: resp.businesses[0].photo_url});
-     //    }
-     // return this;
-     //  } catch(e){}
      return resp.businesses;
    }, 
 });
