@@ -169,11 +169,46 @@ ul.polaroids li {
 
 /********* VIEW WITH VENUE ON LEFT AND EVENTS ON THE RIGHT *****/
 
-ul.venueEvents {
+div.eventContainer {
   list-style: none;
   float: right;
   /*margin-top: -300px;*/
-  
+}
+
+div.eventContainer img {
+  display: block;
+  margin-bottom: 12px;
+  margin: 50px 10px 5px 50px;
+  width: 150px;
+  height: 150px;
+}
+
+div.eventContainer .venuePhoto {
+  transform: rotate(-2deg);
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+}
+
+div.eventContainer .venuePhoto:hover {
+  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  position: relative;
+  z-index: 5;
+}
+
+div.eventContainer .venuePhoto {
+  transition: -webkit-transform .15s linear;
+  -webkit-transition: -webkit-transform .15s linear;
+  box-shadow: 0 3px 6px rgba(0,0,0,.25);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+ 
+div.eventContainer .venuePhoto {
+  box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
 /********* VIEW WITH SPOTIFY PLAYLIST *****/
