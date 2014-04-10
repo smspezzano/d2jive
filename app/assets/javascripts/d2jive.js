@@ -41,13 +41,16 @@ D2Jive.Router = Backbone.Router.extend({
     var venue = params.split("=")[2];
     var venueId = venue.split(',')[0];
     var eventCollection = new D2Jive.Collections.Vents( [], {venueId: venueId});
-    var venueLocation = params.split("=")[1];
+    var venueLocation = params.split("=")[1].split("?")[0];
     var venueName = venue.split(',')[1];
     var venuePhoto = new D2Jive.Collections.VenuePhoto ([], {
       venueLocation: venueLocation,
       venueName: venueName
     });
-    var eventResults = new D2Jive.Views.D2JiveVenueResults({ collection: eventCollection});
+    var eventResults = new D2Jive.Views.D2JiveVenueResults({ 
+      collection: eventCollection,
+      venue: venuePhoto
+    });
     $('.eventContainer').html(eventResults.render().el);
   },
 
@@ -199,7 +202,7 @@ D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
     this.fetch();
   },
 
-
+  model: D2Jive.Models.VenuePhoto,
   apikey: "FMU0kKzY0nkNw61uFSpTfA",
   url: "http://api.yelp.com/business_review_search",
 
@@ -215,14 +218,15 @@ D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
      return( $.ajax(params));
    },
    parse: function(resp, options){
-      try{
-        if (resp.businesses[0] === undefined) {
-          this.set({image_url: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png'});
-        } else {
-          this.set({image_url: resp.businesses[0].photo_url});
-        }
-     return this;
-      } catch(e){}
+     //  try{
+     //    if (resp.businesses[0] === undefined) {
+     //      this.set({href: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png'});
+     //    } else {
+     //      this.set({href: resp.businesses[0].photo_url});
+     //    }
+     // return this;
+     //  } catch(e){}
+     return resp.businesses;
    }, 
 });
 

@@ -5,13 +5,19 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
 
   template: HandlebarsTemplates['d2jive/venue_results'],
 
-  initialize: function () {
+  initialize: function (options) {
+    this.venuePhoto = options.venue;
     this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.venuePhoto , 'sync', this.showPhoto);  
+  },
+
+  showPhoto: function(){
+    $(this.el).append(this.template({model: this.venuePhoto.models[0].attributes}));
   },
 
   render: function(){
-    this.$el.empty();
-    $(this.el).html(this.template({collection: this.venue})); 
+    //this.$el.empty();
+     
     _.each(
       this.collection.models,
       function(show){
