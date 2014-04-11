@@ -11,10 +11,12 @@
 
 
 /********* HEADER.html.erb *************/
-/*
+
 .body {
-  background-color: #ecf0f1;
-}*/
+  /*background-color: #ecf0f1;*/
+  padding-bottom:60px;
+  height: 100%;
+}
 
 .header {
   margin-top: -30px;
@@ -80,7 +82,6 @@
 #overlay {
   /* make the image a bit darker- a module look */
 }
-
 
 ul.polaroids li {
   width: 285px;
@@ -219,13 +220,13 @@ div.eventContainer .venuePhoto {
 
 .footer {
   width: 100%;
-  /*position: fixed;*/
   height:60px;
   bottom: 0;
   left: 0;
   clear: both;
   margin-top: 5px;
-  position: relative;
+/*  position: absolute;
+*/  position: relative;
 }
 
 .footer ul {
