@@ -75,7 +75,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
   defaults: {
     name: '',
     venueId: '',
-    image_url: '',
+    image_url: 'http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png',
     location:'',
   },
 
@@ -131,7 +131,7 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
           //if in localhost take out 'dataType
           type: 'GET',
           dataType: 'jsonp',
-          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey,
+          url: that.url +  ".json?query=" + that.city + '&apikey=' + that.apikey + '&per_page=20',
           jsonp: 'jsoncallback'
       }, options);
 
