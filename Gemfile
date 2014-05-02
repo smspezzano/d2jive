@@ -7,7 +7,7 @@ gem 'rails', '4.0.4'
 gem 'pg'
 
 # Backbone will be the JS framework
-gem 'backbone-on-rails'
+# gem 'backbone-on-rails'
 
 # Use handlebar gem to compile forms
 gem 'handlebars_assets'
@@ -26,6 +26,9 @@ gem 'foundation-rails'
 
 # Use fontAwesome for free icons
 gem 'font-awesome-rails'
+
+# Angular will be the JS framework
+gem 'angularjs-rails', '~> 1.2.16'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
