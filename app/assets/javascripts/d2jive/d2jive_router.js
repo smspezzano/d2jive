@@ -1,17 +1,20 @@
 var d2jiveRouter = angular.module("d2jiveRouter", ["ngRoute"]);
 
-d2jiveRouter.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+d2jiveRouter.config(['$routeProvider', function(
+  $routeProvider){
   $routeProvider
     .when('/', {
-      templateUrl: '../templates/index.html',
-      controller: 'IndexCtrl'
+      templateUrl: 'assets/d2jive/templates/index.html',
+      controller: 'controllers/indexCtrl'
     })
-    .when('/newsfeed', {
-      templateUrl: '../templates/journeys.html',
-      controller: 'NewsFeedCtrl'
+    .when('/venues/:locale', {
+      templateUrl: 'assets/d2jive/templates/localeResults.html',
+      controller: 'controllers/localeResultsCtrl'
     })
-    .when('/profile', {
-      templateUrl: '../templates/profile.html',
-      controller: 'ProfileCtrl'
+    .when('/venue', {
+      templateUrl: 'assets/d2jive/templates/venueResults.html',
+      controller: 'venueResultsCtrl'
     })
 }]);
+
+

@@ -12,12 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore
 //= require angular
 //= require angular-route
 //= require angular-resource
-//= require d2jive
-//= require_tree ../templates
-//= require_tree ./views
+//= require d2jive/d2jive_main
+//= require d2jive/d2jive_router
+//= require_tree ./d2jive/controllers
 //= require_tree .
 
