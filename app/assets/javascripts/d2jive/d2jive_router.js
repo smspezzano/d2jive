@@ -5,15 +5,15 @@ d2jiveRouter.config(['$routeProvider', function(
   $routeProvider
     .when('/', {
       templateUrl: 'assets/d2jive/templates/index.html',
-      controller: 'controllers/indexCtrl'
+      controller: 'IndexCtrl'
     })
     .when('/venues/:locale', {
       templateUrl: 'assets/d2jive/templates/localeResults.html',
-      controller: 'controllers/localeResultsCtrl'
+      controller: 'LocalResultsCtrl'
     })
     .when('/venue', {
       templateUrl: 'assets/d2jive/templates/venueResults.html',
-      controller: 'venueResultsCtrl'
+      controller: 'VenueResultsCtrl'
     })
 }]);
 

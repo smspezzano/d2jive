@@ -1,4 +1,4 @@
-<div class="searchbar" ng-controller="indexCtrl">
+<div class="searchbar" ng-controller="IndexCtrl">
   <form>
     <div class="small-12 columns">
       <div class="small-4 small-offset-4 columns">
@@ -8,8 +8,8 @@
               onkeypress="return event.keyCode != 13" 
               placeholder='Find live events e.g San Francisco, CA'  />
           </div> 
-          <div class="small-3 columns"> {{locale}}
-            <a href="#/venues/{{ locale }}"  ng-click="getLocaleVenues(locale)" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
+          <div class="small-3 columns">
+            <a href="#/venues/{{ locale }}" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
           </div>
         </div>
       </div>
