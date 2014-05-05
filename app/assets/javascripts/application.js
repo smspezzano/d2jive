@@ -17,6 +17,7 @@
 //= require angular-resource
 //= require d2jive/d2jive_main
 //= require d2jive/d2jive_router
+//= require d2jive/d2jive_factory
 //= require_tree ./d2jive/controllers
 //= require_tree .
 

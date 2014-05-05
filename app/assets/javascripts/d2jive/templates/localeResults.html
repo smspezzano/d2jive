@@ -1,6 +1,11 @@
-<ul>
-  <a id="{{venueId}},{{name}}">
-    <!-- <img alt="No Image Available" src="{{image_url}}"> -->
-    {{venues}}
-  </a>
-</ul>
+<div class='resultsContainer small-12 columns' ng-contoller="LocalResultsCtrl">
+
+  <ul>
+    <di
+    <a ng-repeat="venue in venues" id="{{venue.id}},{{venue.name}}">
+      <img alt="No Image Available" src="{{venue.imageUrl}}" onError="this.onerror=
+      null;this.src='http://www.clker.com/cliparts/W/3/g/a/o/x/disco-ball-th.png';">
+    </a>
+  </ul>
+
+</div>

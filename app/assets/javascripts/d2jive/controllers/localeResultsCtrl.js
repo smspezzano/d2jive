@@ -1,4 +1,5 @@
-d2jiveControllers.controller('LocalResultsCtrl', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams){
+d2jiveControllers.controller('LocalResultsCtrl', ['$scope','$http','$routeParams',
+  'venueFactory', function($scope, $http, $routeParams, venueFactory){
 
   var city = $routeParams.locale
 
@@ -10,16 +11,21 @@ d2jiveControllers.controller('LocalResultsCtrl', ['$scope', '$http','$routeParam
 
   var url = baseUrl+ apiKey + data + '&jsoncallback=JSON_CALLBACK' ;
 
-  
+  var venueArray = []
+
   var init = function(url){
     $http.jsonp(url)
       .success(function (data) {
-        $scope.venues = data.resultsPage.results.venue;
+        // $scope.venues = data.resultsPage.results.venue;
+        for (var i=0; i < data.resultsPage.results.venue.length; i++) {
+          updatedVenue = venueFactory.getVenueInfo(data.resultsPage.results.venue[i]);
+          venueArray.push(updatedVenue)
+        }
+        $scope.venues = venueArray
         console.log(data);
       }).
       error(function(data){
-        console.log('no');
-        console.log(data);
+        console.log('failure');
       });
   }
 
