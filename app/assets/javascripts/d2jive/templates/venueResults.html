@@ -6,8 +6,10 @@
     <p>
       <a href="{{event.uri}}" target="_blank"> Buy Tickets</a>
     </p>
-    <div ng-repeat="artist in performance">
-      <a class="button [radius round]" id="artist" data-name="{{artist.displayName}}">Discover {{artist.displayName}}<br> -- {{artist.billing}}</a>
+    <div ng-repeat="artist in event.performance">
+      <a class="button [radius round]" id="artist" ng-click='loadTracks(artist.displayName)'>Discover {{artist.displayName}}<br> -- {{artist.billing}}</a>
+      <div ng-model="html">
+      </div>
     </div>
   </div>
 </div>
