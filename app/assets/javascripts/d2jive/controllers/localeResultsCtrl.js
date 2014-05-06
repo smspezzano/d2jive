@@ -16,34 +16,17 @@ d2jiveControllers.controller('LocalResultsCtrl', ['$scope','$http','$routeParams
   var init = function(url){
     $http.jsonp(url)
       .success(function (data) {
-        // $scope.venues = data.resultsPage.results.venue;
         for (var i=0; i < data.resultsPage.results.venue.length; i++) {
           updatedVenue = venueFactory.getVenueInfo(data.resultsPage.results.venue[i]);
           venueArray.push(updatedVenue)
         }
         $scope.venues = venueArray
-        console.log(data);
       }).
-      error(function(data){
+      error(function(){
         console.log('failure');
       });
   }
 
   init(url);
-
-
-  // var init = function(baseUrl, city){
-  //   $http.jsonp(baseUrl, [
-  //     {
-  //       per_page: 20,
-  //       apikey: '4ash2icfOuY4R7v5',
-  //       query: city
-  //     }
-  //   ])
-  //   .success(function (data) {
-  //     $scope.venues = data.resultsPage.results.venue;
-  //   });
-  // }
-
 
 }]);

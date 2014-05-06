@@ -18,8 +18,6 @@ d2jive.factory('venueFactory', ['$http','$q', function($http, $q){
     var getPhoto = function(yelpUrl){
       $http.jsonp(yelpUrl)
         .success(function (data) {
-          // $scope.venues = data.resultsPage.results.venue;
-          //return data.businesses[0].photo_url
           deferred.resolve(data);
         }).
         error(function(e){

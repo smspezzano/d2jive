@@ -15,6 +15,10 @@ d2jiveRouter.config(['$routeProvider', function(
       templateUrl: 'assets/d2jive/templates/venueResults.html',
       controller: 'VenueResultsCtrl'
     })
+    .otherwise({
+      templateUrl: 'assets/d2jive/templates/index.html',
+      controller: 'IndexCtrl'
+    });
 }]);
 
 

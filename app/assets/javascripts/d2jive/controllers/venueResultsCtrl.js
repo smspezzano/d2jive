@@ -1,5 +1,6 @@
 d2jiveControllers.controller('VenueResultsCtrl', ['$scope','$http','$routeParams',
-  function($scope, $http, $routeParams){
+  '$compile', '$sce', 'spotifyFactory', function($scope, $http, $routeParams, 
+    $compile, $sce, spotifyFactory){
     "use strict";
 
     var venueId = $routeParams.venueId;
@@ -22,21 +23,36 @@ d2jiveControllers.controller('VenueResultsCtrl', ['$scope','$http','$routeParams
     };
 
 
-    var spotifyUrl = "http://ws.spotify.com/search/1/track.json?callback=JSON_CALLBACK&q=";
+// $sce.getTrustedHtml(value)
 
-    var loadTracks = function(artistName){
-      $http.jsonp(spotifyUrl + encodeURIComponent(artistName))
-        .success(function (data) {
-          $scope.tracks = data.tracks.slice(0,9);
-          var tracks = data.tracks.slice(0,9)
-          console.log(data);
-          $scope.html = "<iframe src='https://embed.spotify.com/?uri=spotify:
-          trackset:Playlist:{{tracks}}&theme=white' width='300' height='300' 
-          frameborder='0' allowtransparency='true'></iframe>
-          <a class='hidePlaylist'>Hide Playlist</a>"
-        });
+
+    $scope.tracks = function(artistName){
+
+      var artistTracks = spotifyFactory.getArtistTracks(artistName)
+      
+      var spotifyIframe = $('spotifyIframe');
+      $scope.show_tracks = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:" 
+        + artistTracks + "'"+ "&theme=white'width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
+      // spotifyIframe.html("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:{{artistTracks}&theme=white'
+      // width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
+      // $compile(spotifyIframe.contents())($scope);
+      // $scope.artistTracks = trackArray;
     };
 
-  
     init(url);
 }]);
+
+
+    // var spotifyUrl = "http://ws.spotify.com/search/1/track.json?callback=JSON_CALLBACK&q=";
+
+  // $http.jsonp(spotifyUrl + encodeURIComponent(artistName))
+      //   .success(function (data) {
+      //     var trackArray = [];
+      //       var tracks = data.tracks.slice(0,9);
+      //       for (var track in tracks){
+      //         grabbedTrack = tracks[track].href.slice(
+      //           14, tracks[track].href.length);
+      //         trackArray.push(grabbedTrack);
+      //       }
+      //       // $scope.artistTracks = trackArray;
+      //     console.log(data);
