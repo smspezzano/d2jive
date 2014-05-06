@@ -1,0 +1,13 @@
+<div class="eventContainer row" ng-controller="VenueResultsCtrl">
+  <div ng-repeat="event in events">
+    <h4>
+      {{event.displayName}} 
+    </h4>
+    <p>
+      <a href="{{event.uri}}" target="_blank"> Buy Tickets</a>
+    </p>
+    <div ng-repeat="artist in performance">
+      <a class="button [radius round]" id="artist" data-name="{{artist.displayName}}">Discover {{artist.displayName}}<br> -- {{artist.billing}}</a>
+    </div>
+  </div>
+</div>

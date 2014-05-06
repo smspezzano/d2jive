@@ -11,7 +11,7 @@ d2jiveRouter.config(['$routeProvider', function(
       templateUrl: 'assets/d2jive/templates/localeResults.html',
       controller: 'LocalResultsCtrl'
     })
-    .when('/venue', {
+    .when('/venue/:venueName/:venueId', {
       templateUrl: 'assets/d2jive/templates/venueResults.html',
       controller: 'VenueResultsCtrl'
     })
