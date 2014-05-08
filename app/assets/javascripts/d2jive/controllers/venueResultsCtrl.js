@@ -22,19 +22,19 @@ d2jiveControllers.controller('VenueResultsCtrl', ['$scope','$http','$routeParams
         });
     };
 
-    $scope.tracks = function(artistName){
-        //ng-click="tracks(artist.displayName)"
-      var artistTracks = spotifyFactory.getArtistTracks(artistName);
+    // $scope.tracks = function(artistName){
+    //     //ng-click="tracks(artist.displayName)"
+    //   var artistTracks = spotifyFactory.getArtistTracks(artistName);
       
-      // var spotifyIframe = $('spotifyIframe');
-      // $scope.show_tracks = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:"+artistTracks.spotifyTracks + "'"+ 
-      //   "&theme=white'width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
-      // spotifyIframe.html("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:{{artistTracks}&theme=white'
-      // width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
-      // $compile(spotifyIframe.contents())($scope);
-      // $scope.artistTracks = trackArray;
-      console.log(artistTracks)
-    };
+    //   // var spotifyIframe = $('spotifyIframe');
+    //   // $scope.show_tracks = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:"+artistTracks.spotifyTracks + "'"+ 
+    //   //   "&theme=white'width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
+    //   // spotifyIframe.html("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:{{artistTracks}&theme=white'
+    //   // width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
+    //   // $compile(spotifyIframe.contents())($scope);
+    //   // $scope.artistTracks = trackArray;
+    //   console.log(artistTracks)
+    // };
 
     init(url);
 }]);
