@@ -29,7 +29,7 @@ d2jive.factory('spotifyFactory', ['$http','$q', function($http, $q){
             14, tracks[track].href.length);
           trackArray.push(grabbedTrack);
         }  
-      tracks.spotifyTrakcs = trackArray;    
+      tracks.spotifyTracks = trackArray;    
     });
 
     return tracks;

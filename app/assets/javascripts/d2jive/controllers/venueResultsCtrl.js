@@ -22,21 +22,18 @@ d2jiveControllers.controller('VenueResultsCtrl', ['$scope','$http','$routeParams
         });
     };
 
-
-// $sce.getTrustedHtml(value)
-
-
     $scope.tracks = function(artistName){
-
-      var artistTracks = spotifyFactory.getArtistTracks(artistName)
+        //ng-click="tracks(artist.displayName)"
+      var artistTracks = spotifyFactory.getArtistTracks(artistName);
       
-      var spotifyIframe = $('spotifyIframe');
-      $scope.show_tracks = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:" 
-        + artistTracks + "'"+ "&theme=white'width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
+      // var spotifyIframe = $('spotifyIframe');
+      // $scope.show_tracks = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:"+artistTracks.spotifyTracks + "'"+ 
+      //   "&theme=white'width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
       // spotifyIframe.html("<iframe src='https://embed.spotify.com/?uri=spotify:trackset:Playlist:{{artistTracks}&theme=white'
       // width='300' height='300'frameborder='0' allowtransparency='true'></iframe>")
       // $compile(spotifyIframe.contents())($scope);
       // $scope.artistTracks = trackArray;
+      console.log(artistTracks)
     };
 
     init(url);
@@ -56,3 +53,6 @@ d2jiveControllers.controller('VenueResultsCtrl', ['$scope','$http','$routeParams
       //       }
       //       // $scope.artistTracks = trackArray;
       //     console.log(data);
+
+      //      <div ng-bind-html="show_tracks"></div>
+
