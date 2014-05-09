@@ -1,54 +1,25 @@
-d2jive.factory('spotifyFactory', ['$http','$q', function($http, $q){
+d2jive.factory('spotifyFactory', ['$http', function($http){
 
-  var factory = {}
+  'use strict';
 
-  factory.getArtistTracks = function(artistName){
+  var SpotifyFactory = {};
 
-    var tracks = {}
+    SpotifyFactory.spotifyUrl = 'http://ws.spotify.com/search/1/track.json?q=';
 
-    var spotifyUrl = "http://ws.spotify.com/search/1/track.json?q=";
-
-    // var deferred = $q.defer();
-
-    var getTracks = function(artistName){
-      var trackArray = [];
-      $http.get(spotifyUrl + encodeURIComponent(artistName))
-        .success(function (data) {
-          // deferred.resolve(data);
-          var tracks = data.tracks.slice(0,9);
+    SpotifyFactory.getTracks = function(artistName){
+       var promise = $http.get(SpotifyFactory.spotifyUrl + encodeURIComponent(artistName))
+        .success(function (result){
+          var trackArray = [];
+          var tracks = result.tracks.slice(0,9);
           for (var track in tracks){
-            grabbedTrack = tracks[track].href.slice(
-            14, tracks[track].href.length);
+            var grabbedTrack = tracks[track].href.slice(14,tracks[track].href.length);
             trackArray.push(grabbedTrack);
           }  
+          tracks.spotifyTracks = trackArray;  
+          console.log(tracks.spotifyTracks);
+          return tracks;
         });
-      return trackArray;
-    };
-    
-  
-    // tracks.spotifyTrakcs = getTracks(artistName);
-    var spotifyTracks = getTracks(artistName);
-    tracks.spotifyTracks = spotifyTracks;  
-    // spotifyTracks.then(function(result){
-    //     var trackArray = [];
-    //     var tracks = result.tracks.slice(0,9);
-    //     for (var track in tracks){
-    //       grabbedTrack = tracks[track].href.slice(
-    //         14, tracks[track].href.length);
-    //       trackArray.push(grabbedTrack);
-    //     }  
-    //   tracks.spotifyTracks = trackArray;  
-    //   console.log(tracks.spotifyTracks); 
-    // });
-
-    return tracks;
-    console.log(tracks.spotifyTracks); 
-
-
-  }
-
-
-return factory;
-
-
+      return promise;
+   };
+  return SpotifyFactory;
 }]);
