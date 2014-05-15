@@ -18,7 +18,7 @@ d2jive.directive('getSpotifyTracks', ['spotifyFactory', '$compile', '$sce', '$q'
               var grabbedTrack = tracks[track].href.slice(14,tracks[track].href.length);
               trackArray.push(grabbedTrack);
             }  
-            var t = '<br><br><iframe src="https://embed.spotify.com/?uri=spotify:trackset:Playlist:' + trackArray.toString()+ '"width="300" height="300" frameborder="0" allowtransparency="true"></iframe>';
+            var t = '<br><br><iframe src="https://embed.spotify.com/?uri=spotify:trackset:Playlist:' + trackArray.toString()+ '"width="300" height="300" frameborder="0" allowtransparency="true"></iframe><a ng-click="$parent.hideplaylist()">Hide Playlist</a>';
             iElement.after($compile(t)(scope));
           });
           
