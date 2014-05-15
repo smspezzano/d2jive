@@ -6,7 +6,7 @@
     <p>
       <a href="{{event.uri}}" target="_blank"> Buy Tickets</a>
     </p>
-    <div ng-repeat="artist in event.performance">
+    <div class='spotifyReuslts' ng-repeat="artist in event.performance">
       <button get-spotify-tracks artist-name="{{artist.displayName}}">Discover 
         {{artist.displayName}}<br> -- {{artist.billing}}</button><br><br>
       <div class='spotify'></div>

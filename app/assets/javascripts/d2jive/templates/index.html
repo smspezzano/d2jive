@@ -1,15 +1,15 @@
 <div class="searchbar" ng-controller="IndexCtrl">
-  <form>
+  <form ng-submit='localeSearch(autocomplete)'>
     <div class="small-12 columns">
       <div class="small-4 small-offset-4 columns">
         <div class="row collapse">
           <div class="small-9 columns">
-            <input ng-model="locale" id="city" type="text" 
-              onkeypress="return event.keyCode != 13" 
-              placeholder='Find live events e.g San Francisco, CA'  />
+            <input ng-autocomplete ng-model="autocomplete"
+            id="city" type="text" options="options" details="details" 
+            onkeypress="return event.keyCode != 13" placeholder='Find live events e.g San Francisco, CA'/>
           </div> 
           <div class="small-3 columns">
-            <a href="#/venues/{{ locale }}" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
+            <a href="#/venues/{{ autocomplete }}" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
           </div>
         </div>
       </div>

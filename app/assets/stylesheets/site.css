@@ -42,7 +42,7 @@
 /********* D2Jive_index.hbs *************/
 
 .searchbar {
-  height: 770px;
+  height: 850px;
   top:-150px;
   width: 100%; 
   text-align:center;
@@ -212,8 +212,12 @@ div.eventContainer .venuePhoto {
 
 /********* VIEW WITH SPOTIFY PLAYLIST *****/
 
-.spotifyPlaylist {
+#outerWidgetContainer {
   margin-left: -40px;
+}
+
+.spotifyReuslts {
+  display: inline;
 }
 
 /********* FOOTER.html.erb *************/
