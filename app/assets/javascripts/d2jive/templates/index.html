@@ -6,7 +6,7 @@
           <div class="small-9 columns">
             <input ng-autocomplete ng-model="autocomplete"
             id="city" type="text" options="options" details="details" 
-            onkeypress="return event.keyCode != 13" placeholder='Find live events e.g San Francisco, CA'/>
+            onkeypress="return event.keyCode != 13" placeholder='Find live events e.g San Francisco, CA' autofocus/>
           </div> 
           <div class="small-3 columns">
             <a href="#/venues/{{ autocomplete }}" class="button postfix" id="submit"><i class="fa fa-search fa-lg"></i></a>
