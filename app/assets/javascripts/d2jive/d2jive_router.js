@@ -4,19 +4,19 @@ d2jiveRouter.config(['$routeProvider', function(
   $routeProvider){
   $routeProvider
     .when('/', {
-      templateUrl: 'assets/d2jive/templates/index.html',
+      templateUrl: 'assets/index.html',
       controller: 'IndexCtrl'
     })
     .when('/venues/:locale', {
-      templateUrl: 'assets/d2jive/templates/localeResults.html',
+      templateUrl: 'assets/localeResults.html',
       controller: 'LocalResultsCtrl'
     })
     .when('/venue/:venueName/:venueId', {
-      templateUrl: 'assets/d2jive/templates/venueResults.html',
+      templateUrl: 'assets/venueResults.html',
       controller: 'VenueResultsCtrl'
     })
     .otherwise({
-      templateUrl: 'assets/d2jive/templates/index.html',
+      templateUrl: 'assets/index.html',
       controller: 'IndexCtrl'
     });
 }]);
