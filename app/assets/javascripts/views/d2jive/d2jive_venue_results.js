@@ -1,5 +1,5 @@
-D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
-  
+  D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
+
   tagName: 'ul',
   className: 'venueEvents small-6 columns',
 
@@ -8,7 +8,7 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
   initialize: function (options) {
     this.venuePhoto = options.venue;
     this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.venuePhoto , 'sync', this.showPhoto);  
+    this.listenTo(this.venuePhoto , 'sync', this.showPhoto);
   },
 
   showPhoto: function(){
@@ -18,7 +18,7 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
 
   render: function(){
     //this.$el.empty();
-     
+
     _.each(
       this.collection.models,
       function(show){
@@ -26,7 +26,7 @@ D2Jive.Views.D2JiveVenueResults = Backbone.View.extend({
       },
       this
     );
-    return this; 
+    return this;
   }
 
 });

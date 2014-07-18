@@ -2,7 +2,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
 
   tagName: 'ul',
 
-  className: 'mosaic-row stack-767',
+  className: 'mosaic-row center stack-767',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
