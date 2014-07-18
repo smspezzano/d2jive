@@ -1,7 +1,8 @@
 D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
-  
+
   tagName: 'ul',
-  className: 'polaroids large-block-grid-4 small-block-grid-2',
+
+  className: 'mosaic-row center',
 
   template: HandlebarsTemplates['d2jive/locale_results'],
 
@@ -23,7 +24,7 @@ D2Jive.Views.D2JiveLocaleResults = Backbone.View.extend({
       },
       this
     );
-    return this; 
+    return this;
   },
 
   getShows: function(event){

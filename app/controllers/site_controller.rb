@@ -1,10 +1,11 @@
 class SiteController < ApplicationController
 
   def index
+
   end
-  
+
   def venues
-   
+
   end
 
   def venue
@@ -12,7 +13,7 @@ class SiteController < ApplicationController
 
   def event
   end
-  
+
   def about_us
   end
 

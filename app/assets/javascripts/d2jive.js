@@ -17,7 +17,7 @@ var vent = _.extend({}, Backbone.Events);
 D2Jive.Router = Backbone.Router.extend({
 
   routes: {
-    
+
     "": "home",                     // #
     "venues": "localeResults",      // #venues/san+francisco+ca
     "venue" : "showResults",        // #venue/san+francisco+ca/7869/events
@@ -50,7 +50,7 @@ D2Jive.Router = Backbone.Router.extend({
       venueLocation: venueLocation,
       venueName: venueName
     });
-    var eventResults = new D2Jive.Views.D2JiveVenueResults({ 
+    var eventResults = new D2Jive.Views.D2JiveVenueResults({
       collection: eventCollection,
       venue: venuePhoto
     });
@@ -65,13 +65,13 @@ D2Jive.Router = Backbone.Router.extend({
     $('.bodyContainer').append(trackResults.render().el);
   }
 
-      
+
 });
 
 // Create a Venue Model that gets created on API call
 
 D2Jive.Models.Venue = Backbone.Model.extend({
-  
+
   defaults: {
     name: '',
     venueId: '',
@@ -85,7 +85,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
     this.attributes.location = attributes.zip;
     this.fetch();
    },
-  
+
    apikey: "FMU0kKzY0nkNw61uFSpTfA",
    url: "http://api.yelp.com/business_review_search",
 
@@ -110,7 +110,7 @@ D2Jive.Models.Venue = Backbone.Model.extend({
         }
      return this;
       } catch(e){}
-   } 
+   }
 
 });
 
@@ -143,14 +143,14 @@ D2Jive.Collections.Venues = Backbone.Collection.extend({
   parse: function(resp, options){
     var venue = resp.resultsPage.results.venue;
     return  venue;
-  }, 
+  },
 });
 
 
 // // Create a Event Model that gets changed on API call
 
 D2Jive.Models.Vents = Backbone.Model.extend({
-  
+
   defaults : {
     name: '',
     uri: '',
@@ -190,14 +190,14 @@ D2Jive.Collections.Vents = Backbone.Collection.extend({
 //Create a single venue Model that gets created after a yelp API call
 
 D2Jive.Models.VenuePhoto = Backbone.Model.extend({
-  
+
   defaults : {
     href: '',
-  }, 
+  },
 
 });
 
-//Create a single venue collection to grab yelp photo 
+//Create a single venue collection to grab yelp photo
 
 D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
   initialize: function(attributes, options){
@@ -223,17 +223,17 @@ D2Jive.Collections.VenuePhoto = Backbone.Collection.extend({
    },
    parse: function(resp, options){
      return resp.businesses;
-   }, 
+   },
 });
 
 
 //Create a Tracks Model that gets changed on API call
 
 D2Jive.Models.Tracks = Backbone.Model.extend({
-  
+
   defaults : {
     href: '',
-  }, 
+  },
 
 });
 
@@ -258,7 +258,7 @@ D2Jive.Collections.Tracks = Backbone.Collection.extend({
   parse: function(resp, options){
     spotifyResp = resp.tracks.slice(0,9);
     return spotifyResp;
-  } 
+  }
 
 });
 

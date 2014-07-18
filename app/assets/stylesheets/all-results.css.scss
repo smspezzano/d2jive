@@ -1,0 +1,91 @@
+.resultsContainer{
+  padding: 40px;
+
+  .mosaic-row .cell {
+    padding:1.5px;
+  }
+  .venueBox {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgba(252, 245, 236, .9);
+    margin: 0 30px 20px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      border-right: #fff 7px solid;
+      border-bottom: #fff 7px solid;
+      -moz-border-radius: 0 0 40px 0;
+      -webkit-border-radius: 0 0 40px 0;
+      border-radius: 0 0 40px 0;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      right: 0;
+      border-left: #fff 7px solid;
+      border-bottom: #fff 7px solid;
+      -moz-border-radius: 0 0 0 40px;
+      -webkit-border-radius: 0 0 0 40px;
+      border-radius: 0 0 0 40px;
+    }
+
+    img {
+      float: left;
+    }
+
+    a{
+      /* outline: 1px rgba(255, 255, 255, 0.4) dashed; */
+      border: 1px rgba(0, 0, 0, 0.3) dashed;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.5);
+      float: left;
+      width: 94%;
+      padding: 10px;
+
+      &:hover {
+        color: rgba(0,0,0,0.9);
+      }
+
+      &:after {
+        content: "";
+        position: absolute !important;
+        z-index: 100;
+        bottom: 0;
+        left: 0;
+        border-right: #fff 7px solid;
+        border-top: #fff 7px solid;
+        -moz-border-radius: 0 40px 0 0;
+        -webkit-border-radius: 0 40px 0 0;
+        border-radius: 0 40px 0 0;
+      }
+
+      &:before {
+        content: "";
+        position: absolute !important;
+        z-index: 1000;
+        bottom: 0;
+        right: 0;
+        border-left: #fff 7px solid;
+        border-top: #fff 7px solid;
+        -moz-border-radius: 40px 0 0 0;
+        -webkit-border-radius: 40px 0 0 0;
+        border-radius: 40px 0 0 0;
+      }
+    }
+    p {
+      text-align: center;
+      padding: 0px 10px;
+      float: left;
+      font-size: 21px;
+      width: 50%;
+    }
+  }
+}

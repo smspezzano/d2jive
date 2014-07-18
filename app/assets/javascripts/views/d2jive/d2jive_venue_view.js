@@ -2,8 +2,10 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
 
   tagName: 'li',
 
+  className: 'venueBox cell cell-3',
+
   events: {
-    
+
   },
 
   template: HandlebarsTemplates['d2jive/venue_view'],
@@ -16,7 +18,7 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
     var singleVenue = this.model.toJSON();
     this.$el.html(this.template(singleVenue));
 
-    return this; 
+    return this;
   }
 
 });
