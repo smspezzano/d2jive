@@ -2,7 +2,7 @@ D2Jive.Views.D2JiveVenueView = Backbone.View.extend({
 
   tagName: 'li',
 
-  className: 'venueBox cell cell-3',
+  className: 'venueBox cell cell-5',
 
   events: {
 

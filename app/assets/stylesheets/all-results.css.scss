@@ -1,91 +1,46 @@
 .resultsContainer{
-  padding: 40px;
-
+  padding: 20px 0px;
+  color: rgb(64,64,64);
   .mosaic-row .cell {
     padding:1.5px;
   }
+
   .venueBox {
-    font-family: Arial;
-    font-size: 12px;
-    font-weight: bold;
-    background: rgba(252, 245, 236, .9);
-    margin: 0 30px 20px;
+    margin: 20px 20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
 
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: 100;
-      top: 0;
-      left: 0;
-      border-right: #fff 7px solid;
-      border-bottom: #fff 7px solid;
-      -moz-border-radius: 0 0 40px 0;
-      -webkit-border-radius: 0 0 40px 0;
-      border-radius: 0 0 40px 0;
+    &:hover {
+      background-color: #f6f8fa;
     }
-
-    &:before {
-      content: "";
-      position: absolute;
-      z-index: 100;
-      top: 0;
-      right: 0;
-      border-left: #fff 7px solid;
-      border-bottom: #fff 7px solid;
-      -moz-border-radius: 0 0 0 40px;
-      -webkit-border-radius: 0 0 0 40px;
-      border-radius: 0 0 0 40px;
+    .venue-info {
+      float: left;
     }
-
     img {
       float: left;
+      text-align: left;
+      padding: 10px 0px;
     }
 
-    a{
-      /* outline: 1px rgba(255, 255, 255, 0.4) dashed; */
-      border: 1px rgba(0, 0, 0, 0.3) dashed;
-      text-decoration: none;
-      color: rgba(0, 0, 0, 0.5);
-      float: left;
-      width: 94%;
-      padding: 10px;
-
-      &:hover {
-        color: rgba(0,0,0,0.9);
-      }
-
-      &:after {
-        content: "";
-        position: absolute !important;
-        z-index: 100;
-        bottom: 0;
-        left: 0;
-        border-right: #fff 7px solid;
-        border-top: #fff 7px solid;
-        -moz-border-radius: 0 40px 0 0;
-        -webkit-border-radius: 0 40px 0 0;
-        border-radius: 0 40px 0 0;
-      }
-
-      &:before {
-        content: "";
-        position: absolute !important;
-        z-index: 1000;
-        bottom: 0;
-        right: 0;
-        border-left: #fff 7px solid;
-        border-top: #fff 7px solid;
-        -moz-border-radius: 40px 0 0 0;
-        -webkit-border-radius: 40px 0 0 0;
-        border-radius: 40px 0 0 0;
-      }
+    h3 {
+      font-size: 18px;
+      font-family: 'Proxima', Tahoma, Verdana, Segoe, sans-serif;
+      padding: 0px 20px;
+      width: auto;
+      text-align: left;
+      margin-bottom: 0px;
+      display: block
     }
-    p {
-      text-align: center;
-      padding: 0px 10px;
+    h5 {
       float: left;
-      font-size: 21px;
+      display: block;
       width: 50%;
+      text-align: left;
+      margin-bottom: 0px;
+      padding-left: 30px;
+      margin-bottom: -10px;
     }
+
   }
 }

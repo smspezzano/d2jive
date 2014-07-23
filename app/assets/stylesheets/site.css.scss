@@ -19,19 +19,20 @@
 }
 
 .header {
-  margin-top: -30px;
-  margin-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   height: 100px;
-  margin-left: 25px;
+  margin-left: 40px;
+
+  #logo h1 a{
+    color:black;
+    font-family: 'Audiowide', cursive;
+    font-size: 65px;
+    z-index: 1;
+    position: absolute;
+  }
 }
 
-#logo h1{
-  color:#3498db;
-  font-family: 'Audiowide', cursive;
-  font-size: 65px;
-  z-index: 1;
-  position: absolute;
-}
 
 .soundwave {
   margin: -100px;
